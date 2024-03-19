@@ -1,31 +1,29 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../assets/style/LoginPage.scss";
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from "jwt-decode"; // Import de la fonction jwtDecode
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState(null);
-  // variable qui va vérifier les info lors de la connexion (check du role dans le back)
+
   const handleLogin = async (event) => {
     event.preventDefault();
 
-    // var pour la connexion
+    // Récupération des informations de connexion depuis le formulaire
     const email = event.target.email.value;
     const password = event.target.password.value;
 
-    // variable qui stock les info de mon utilisateur
+    // Création des données de connexion à envoyer au serveur
     const loginData = {
       email,
       password,
     };
 
-    // objet => JSON
+    // Conversion des données de connexion en format JSON
     const loginDataJson = JSON.stringify(loginData);
 
-    //requête vers l'API de type post
-    // de mon email et password en json (précisions a mon api que je suis en json)
-
+    // Envoi de la requête de connexion au serveur
     const loginResponse = await fetch("http://localhost:3001/api/users/login", {
       method: "POST",
       headers: {
@@ -34,22 +32,35 @@ const LoginPage = () => {
       body: loginDataJson,
     });
 
+    // Traitement de la réponse de la requête
     const loginResponseData = await loginResponse.json();
     const token = loginResponseData.data;
 
     if (token) {
       localStorage.setItem("jwt", token);
+
+      // Décodage du token pour obtenir les informations utilisateur, notamment le rôle
       const decodedToken = jwtDecode(token);
-      console.log(decodedToken.dataRole)
+      console.log(decodedToken.dataRole);
+
+      // Redirection en fonction du rôle de l'utilisateur
       if (decodedToken.dataRole <= 2) {
-          setMessage("Vous êtes bien connecté en tant qu'admin");
+        setMessage("Vous êtes bien connecté en tant qu'admin");
+        setTimeout(() => {
           navigate("/admin");
+        }, 2000); // Redirection vers la page d'admin après 2 secondes
       } else {
-          setMessage("Vous êtes bien connecté");
+        setMessage("Vous êtes bien connecté");
+        setTimeout(() => {
           navigate("/");
+        }, 2000); // Redirection vers la page d'accueil après 2 secondes
       }
+      
     }
-};
+    else {
+      setMessage("Identifiants incorrects ou mot de passe. Veuillez réessayer.");
+    }
+  };
 
   return (
     <main>
@@ -65,6 +76,9 @@ const LoginPage = () => {
             <input type="password" name="password" />
           </label>
           <input type="submit" />
+          <p>Vous n'avez pas de compte ?</p>
+          
+          <p onClick={() => navigate("/createUserPage")}>Créer un compte.</p>
         </form>
       </section>
     </main>

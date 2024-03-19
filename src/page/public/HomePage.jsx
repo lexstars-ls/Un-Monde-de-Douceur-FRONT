@@ -157,7 +157,7 @@ const HomePage = () => {
           </article>
 
           <h2>Derniers Commentaires</h2>
-         {/* <Com /> */}
+         <Com />
 
 
         </section>
