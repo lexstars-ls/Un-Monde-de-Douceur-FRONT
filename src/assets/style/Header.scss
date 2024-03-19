@@ -1,0 +1,53 @@
+@import './variables.scss';
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+header {
+    
+    nav{
+        position: fixed;
+        z-index: 1;
+      
+        background-color: $color1;
+        height: 80px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        
+        
+        ul{
+            
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+
+            li{
+                list-style: none;
+                
+                
+                font-size: 30px;
+                a{text-decoration: none;
+                    font-style: none;
+                    color: $color2;
+                }
+                #loginbutton{
+                    @extend .bouton;
+                    background-color: unset;
+                    border: solid $color4 1px;
+                    color: $color4;
+                }
+                #discobutton{
+                    @extend .bouton;
+                    background-color: $color4;
+                    border: solid $color4 2px;
+                    color: $color1;
+                }
+            }
+        }
+    }
+   
+
+    
+}

@@ -1,0 +1,50 @@
+@import './variables.scss';
+
+main {
+    #createReview {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: $color3;
+        background-image: url("../img/bainM.jpeg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 600px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: $color1;
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: darken($color5, 10%);
+            }
+        }
+    }
+
+    p {
+        color: $color5;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+}
