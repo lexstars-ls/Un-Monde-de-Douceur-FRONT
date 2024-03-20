@@ -1,25 +1,36 @@
 @import './variables.scss';
-main{
-#sectionLogin {
+
+.loginpage-main {
+  height: 100vh;
+  background-color: $color3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  #sectionLogin {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-  background-color: $color3;
+   border: 2px solid $color1;
+    width: 35%;
+    height: 45%;
+    border-radius: 2%;
+
     form {
       display: flex;
       flex-direction: column;
       width: 300px;
-   
-     
-  
+
+
+
       label {
         margin-bottom: 10px;
         font-weight: bold;
-        
+
       }
-  
+
       input {
         padding: 8px;
         margin-bottom: 15px;
@@ -28,18 +39,35 @@ main{
         width: 100%;
         box-sizing: border-box;
       }
-  
+
       input[type="submit"] {
         background-color: $color5;
         color: white;
         cursor: pointer;
         transition: background-color 0.3s;
-        
+
         &:hover {
           background-color: $color1;
         }
       }
-  
+
+      p {
+        color: $color2;
+
+        &:last-of-type {
+          // Styles spécifiques pour le dernier paragraphe
+          transition: color 0.3s ease; // Transition pour changer la couleur du texte
+          cursor: pointer; 
+          color: black;
+          text-decoration: underline;
+        }
+
+        &:last-of-type:hover {
+          // Styles lors du survol du dernier paragraphe
+          color: $color2; 
+        }
+      }
+
     }
   }
 }

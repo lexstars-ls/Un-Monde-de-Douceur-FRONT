@@ -10,7 +10,7 @@ const HomePage = () => {
     <>
       <Header />
 
-      <main>
+      <main className="home-page">
         <section id="logo">
           <div className="imgContainer">
             <h1>Un Monde de Douceur</h1>

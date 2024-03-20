@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import "../../assets/style/CreateUser.scss";
 const CreateUserPage = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -37,16 +37,19 @@ const CreateUserPage = () => {
     });
 
     if (registerResponse.status === 201) {
+    
       setMessage("Vous vous êtes bien enregistré");
-      navigate("/");
+      setTimeout(() => {
+        navigate("/");
+      }, 2000); // Redirection vers la page d'accueil après 2 secondes
     } else {
       setMessage("Erreur lors de l'enregistrement");
     }
   };
 
   return (
-    <main>
-      <section>
+    <main className="create-user-page">
+      <section  className="create-user-form">
         <h2>Créer un utilisateur</h2>
         {message && <p>{message}</p>}
         <form onSubmit={handleSubmit}>

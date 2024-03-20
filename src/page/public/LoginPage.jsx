@@ -63,16 +63,16 @@ const LoginPage = () => {
   };
 
   return (
-    <main>
+    <main className="loginpage-main">
       <section id="sectionLogin">
         {message && <p>{message}</p>}
         <form onSubmit={handleLogin}>
           <label>
-            email
+            Email:
             <input type="email" name="email" />
           </label>
           <label>
-            password
+            Mot de passe:
             <input type="password" name="password" />
           </label>
           <input type="submit" />

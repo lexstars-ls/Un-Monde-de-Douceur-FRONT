@@ -6,127 +6,131 @@
 
 }
 
-main {
-  background-color: $color3;
-   
-  #logo {
-    height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $color4;
 
-    .imgContainer {
-      width: 100%;
+  .home-page {
+    background-color: $color3;
+
+    #logo {
+      height: 100vh;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
+      background-color: $color4;
 
-      h1 {
-        font-size: 110px;
-        color: #ffffff;
-        opacity: 0.4;
-        position: absolute;
-        font-family: 'Macondo', cursive;
-        text-shadow: -1px 0 $color1, 0 1px $color1, 1px 0 $color1, 0 -1px $color1;
-        transition-property: text-shadow;
-        transition-duration: 200s;
-        transition-delay: 200s;
-      }
+      .imgContainer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-
-      img {
-        width: 30ù;
-        transition: width 100ms linear, display;
-
-      }
-
-    }
-
-    .imgContainer:hover {
-      h1 {
-        opacity: 1;
-        color: $color3;
-        z-index: 1;
-      }
-
-      img {
-        width: 25%;
-        z-index: 2;
-      }
-    }
-
-  }
-
-
-
-  #Background {
-    height: 100vh;
-    background-color: $color3;
-
-
-    article {
-     height: 50vh;
-      color: $color1;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-
-      img {
-        margin-left: 6%;
-        width: 300px;
-      }
-
-      section {
-
-        h2 {
-          
-          font-size: 40px;
-          text-align: center;
-          color: $color2;
-          margin-bottom: 30px;
-          margin-right: 80px;
+        h1 {
+          font-size: 110px;
+          color: #ffffff;
+          opacity: 0.4;
+          position: absolute;
+          font-family: 'Macondo', cursive;
+          text-shadow: -1px 0 $color1, 0 1px $color1, 1px 0 $color1, 0 -1px $color1;
+          transition-property: text-shadow;
+          transition-duration: 200s;
+          transition-delay: 200s;
         }
 
-        p {
-          text-align: start;
-          color: $color2;
-          width: 600px;
+
+        img {
+          width: 30ù;
+          transition: width 100ms linear, display;
+
+        }
+
+      }
+
+      .imgContainer:hover {
+        h1 {
+          opacity: 1;
+          color: $color3;
+          z-index: 1;
+        }
+
+        img {
+          width: 25%;
+          z-index: 2;
         }
       }
+
     }
 
 
 
-  }
+    #Background {
+      height: 100vh;
+      background-color: $color3;
 
-  #prestation{
-    margin: 5%;
-    background-color: $color5;
-  padding: 5%;
-    h2{
-      font-size: 40px;
-      text-align: center;
-      color: $color2;
-    }
-    article{
-      color: $color1;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-  
-      img{
-        width: 300px;
+
+      article {
+        height: 50vh;
+        color: $color1;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        img {
+          margin-left: 6%;
+          width: 300px;
+        }
+
+        section {
+
+          h2 {
+
+            font-size: 40px;
+            text-align: center;
+            color: $color2;
+            margin-bottom: 30px;
+            margin-right: 80px;
+          }
+
+          p {
+            text-align: start;
+            color: $color2;
+            width: 600px;
+          }
+        }
       }
-      
-    }
-    p{
-      text-align: start;
-      width: 500px;
-      color: $color2;
-    }
-    
-  }
 
-}
+
+
+    }
+
+    #prestation {
+      margin: 5%;
+      background-color: $color5;
+      padding: 5%;
+
+      h2 {
+        font-size: 40px;
+        text-align: center;
+        color: $color2;
+      }
+
+      article {
+        color: $color1;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        img {
+          width: 300px;
+        }
+
+      }
+
+      p {
+        text-align: start;
+        width: 500px;
+        color: $color2;
+      }
+
+    }
+
+  }

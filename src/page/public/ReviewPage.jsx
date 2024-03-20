@@ -25,7 +25,7 @@ const ReviewPage = () => {
           {reviews.map((review) => (
             <article id="reviewArticle" key={review.id}>
               <p>{review.content}</p>
-              {/* Assurez-vous que review.User existe avant d'accéder à ses propriétés */}
+             
               {review.User && (
                 <p>
                   Par {review.User.username}, publié le{" "}
