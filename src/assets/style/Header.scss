@@ -5,49 +5,79 @@
     
 }
 header {
-    
-    nav{
+    nav {
         position: fixed;
         z-index: 1;
-      
         background-color: $color1;
         height: 80px;
         width: 100%;
         display: flex;
-        align-items: center;
-        
-        
-        ul{
-            
-            width: 100%;
+        justify-content: center; /* Centrage horizontal */
+        align-items: center; /* Centrage vertical */
+
+        ul {
             display: flex;
             justify-content: space-around;
+            align-items: center; /* Centrage vertical */
+            list-style: none;
+            width: 100%;
 
-            li{
-                list-style: none;
-                
-                
+            li {
                 font-size: 30px;
-                a{text-decoration: none;
+
+                a {
+                    text-decoration: none;
                     font-style: none;
                     color: $color2;
+                    transition: all 0.3s;
                 }
-                #loginbutton{
+
+                #loginButton {
+                    margin-bottom: 3%;
                     @extend .bouton;
                     background-color: unset;
                     border: solid $color4 1px;
                     color: $color4;
                 }
-                #discobutton{
+                #profilButton {
+                    margin-bottom: 3%;
+                    @extend .bouton;
+                    background-color: unset;
+                    border: solid $color4 1px;
+                    color: $color4;
+                }
+
+                #disconnectButton {
+                    margin-bottom: 3%;
                     @extend .bouton;
                     background-color: $color4;
                     border: solid $color4 2px;
                     color: $color1;
                 }
+
+                #loginButton:hover, #profilButton:hover {
+                    @extend .bouton;
+                    background-color: $color4;
+                    border: solid $color4 2px;
+                    color: $color1;
+                }
+
+                #disconnectButton:hover {
+                    @extend .bouton;
+                    background-color: unset;
+                    border: solid $color4 1px;
+                    color: $color4;
+                }
+
+                a:hover {
+                    color: $color3;
+                    text-decoration: underline;
+                }
+                &:active, &:focus {
+                    
+                    transform: scale(0.9); // Rétrécissement du texte lorsque l'utilisateur click sur ma nav bar
+                }
             }
         }
     }
-   
-
-    
 }

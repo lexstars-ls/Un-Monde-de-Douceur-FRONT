@@ -48,7 +48,7 @@ const CreateUserPage = () => {
   };
 
   return (
-    <main className="create-user-page">
+    <main className="create-user-page-main">
       <section  className="create-user-form">
         <h2>Créer un utilisateur</h2>
         {message && <p>{message}</p>}

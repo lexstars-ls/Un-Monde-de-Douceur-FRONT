@@ -48,7 +48,7 @@ const Header = () => {
             <>
               <li>
                 <button
-                  id="profileButton"
+                  id="profilButton"
                   onClick={() => navigate("/profilPage")}
                 >
                   Votre profil

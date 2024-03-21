@@ -25,10 +25,12 @@ const LoginPage = () => {
 
     // Envoi de la requête de connexion au serveur
     const loginResponse = await fetch("http://localhost:3001/api/users/login", {
+      // La méthode login est un POST
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
+         // Récupération du contenu du body
       body: loginDataJson,
     });
 
@@ -42,7 +44,7 @@ const LoginPage = () => {
       // Décodage du token pour obtenir les informations utilisateur, notamment le rôle
       const decodedToken = jwtDecode(token);
       console.log(decodedToken.dataRole);
-
+      console.log(decodedToken.dataId);
       // Redirection en fonction du rôle de l'utilisateur
       if (decodedToken.dataRole <= 2) {
         setMessage("Vous êtes bien connecté en tant qu'admin");
@@ -55,10 +57,10 @@ const LoginPage = () => {
           navigate("/");
         }, 2000); // Redirection vers la page d'accueil après 2 secondes
       }
-      
-    }
-    else {
-      setMessage("Identifiants incorrects ou mot de passe. Veuillez réessayer.");
+    } else {
+      setMessage(
+        "Identifiants incorrects ou mot de passe. Veuillez réessayer."
+      );
     }
   };
 
@@ -75,7 +77,7 @@ const LoginPage = () => {
             Mot de passe:
             <input type="password" name="password" />
           </label>
-          <input type="submit" />
+          <button type="submit">Connexion</button>
           <p>Vous n'avez pas de compte ?</p>
           
           <p onClick={() => navigate("/createUserPage")}>Créer un compte.</p>

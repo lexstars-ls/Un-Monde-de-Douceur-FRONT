@@ -9,20 +9,19 @@
   justify-content: center;
 
   #sectionLogin {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-   border: 2px solid $color1;
-    width: 35%;
-    height: 45%;
-    border-radius: 2%;
-
+    
     form {
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 500px;
+      height: 300px;
       display: flex;
+      
+      justify-content: center;
       flex-direction: column;
-      width: 300px;
-
+      
 
 
       label {
@@ -32,27 +31,30 @@
       }
 
       input {
-        padding: 8px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
+        width: 95%;
+        padding: 10px;
+        border: 1px solid #ced4da;
         border-radius: 5px;
-        width: 100%;
-        box-sizing: border-box;
+        margin-top: 5px;
       }
 
-      input[type="submit"] {
+      button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
         background-color: $color5;
-        color: white;
+        color: #fff;
+        font-size: 16px;
         cursor: pointer;
-        transition: background-color 0.3s;
+        margin-top: 10px;
 
         &:hover {
           background-color: $color1;
         }
       }
-
       p {
-        color: $color2;
+        color: $color6;
 
         &:last-of-type {
           // Styles spécifiques pour le dernier paragraphe
@@ -64,7 +66,7 @@
 
         &:last-of-type:hover {
           // Styles lors du survol du dernier paragraphe
-          color: $color2; 
+          color: red; 
         }
       }
 
