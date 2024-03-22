@@ -19,7 +19,7 @@
       background-color: $color4;
 
       .imgContainer {
-        width: 100%;
+        width: 900px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -27,7 +27,8 @@
         h1 {
           font-size: 110px;
           color: #ffffff;
-          opacity: 0.4;
+          
+          opacity: 0.5;
           position: absolute;
           font-family: 'Macondo', cursive;
           text-shadow: -1px 0 $color1, 0 1px $color1, 1px 0 $color1, 0 -1px $color1;
@@ -38,7 +39,7 @@
 
 
         img {
-          width: 30ù;
+          width: 400px;
           transition: width 100ms linear, display;
 
         }

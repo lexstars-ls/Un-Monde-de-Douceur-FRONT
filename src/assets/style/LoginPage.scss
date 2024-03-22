@@ -9,7 +9,7 @@
   justify-content: center;
 
   #sectionLogin {
-    
+
     form {
       background-color: #f8f9fa;
       border-radius: 10px;
@@ -18,10 +18,10 @@
       width: 500px;
       height: 300px;
       display: flex;
-      
+
       justify-content: center;
       flex-direction: column;
-      
+
 
 
       label {
@@ -33,9 +33,13 @@
       input {
         width: 95%;
         padding: 10px;
-        border: 1px solid #ced4da;
+        border: 1px solid $color1;
         border-radius: 5px;
         margin-top: 5px;
+      }
+
+      label {
+        color: $color1;
       }
 
       button {
@@ -53,20 +57,21 @@
           background-color: $color1;
         }
       }
+
       p {
         color: $color6;
 
         &:last-of-type {
           // Styles spécifiques pour le dernier paragraphe
           transition: color 0.3s ease; // Transition pour changer la couleur du texte
-          cursor: pointer; 
+          cursor: pointer;
           color: black;
           text-decoration: underline;
         }
 
         &:last-of-type:hover {
           // Styles lors du survol du dernier paragraphe
-          color: red; 
+          color: blue;
         }
       }
 

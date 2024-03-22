@@ -7,6 +7,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState(null);
 
+  //  la fonction est asynchronne il y a un fetch vers l'API
   const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -14,6 +15,7 @@ const LoginPage = () => {
     const email = event.target.email.value;
     const password = event.target.password.value;
 
+    console.log(email, password);
     // Création des données de connexion à envoyer au serveur
     const loginData = {
       email,
@@ -30,14 +32,15 @@ const LoginPage = () => {
       headers: {
         "Content-Type": "application/json",
       },
-         // Récupération du contenu du body
+      // Récupération du contenu du body
       body: loginDataJson,
     });
 
-    // Traitement de la réponse de la requête
+    // Traitement de la réponse de la requête a l'api
     const loginResponseData = await loginResponse.json();
+    // récupération du token
     const token = loginResponseData.data;
-
+    console.log(token);
     if (token) {
       localStorage.setItem("jwt", token);
 
@@ -79,7 +82,7 @@ const LoginPage = () => {
           </label>
           <button type="submit">Connexion</button>
           <p>Vous n'avez pas de compte ?</p>
-          
+
           <p onClick={() => navigate("/createUserPage")}>Créer un compte.</p>
         </form>
       </section>

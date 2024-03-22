@@ -55,11 +55,11 @@ const CreateUserPage = () => {
         <form onSubmit={handleSubmit}>
           <label>
             Nom d'utilisateur:
-            <input type="text" name="username" value={formData.username} onChange={handleChange} required />
+            <input type="text" placeholder="Maman de Lou" name="username" value={formData.username} onChange={handleChange} required />
           </label>
           <label>
             Email:
-            <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+            <input type="email" placeholder="...@gmail.com" name="email" value={formData.email} onChange={handleChange} required  />
           </label>
           <label>
             Mot de passe:

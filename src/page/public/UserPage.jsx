@@ -1,28 +1,30 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 
 const UserPage = () => {
-    useEffect(() => {
-        // Récupération du token depuis le localStorage
-        const token = localStorage.getItem("jwt");
-        
-        // Vérification si le token existe
-        if (token) {
-            // Décodage du token
-            const decodedToken = jwtDecode(token);
-            
-            // Affichage du token dans la console log
-            console.log("Token de l'utilisateur connecté :", decodedToken);
-        } else {
-            console.log("Aucun token trouvé dans le localStorage.");
-        }
-    }, []);
+  const [userData, setUserData] = useState(null); // State pour stocker les informations de l'utilisateur
 
-    return (
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      setUserData(decodedToken); // Stocker les informations de l'utilisateur dans le state
+    }
+  }, []);
+
+  return (
+    <div>
+      {userData && (
         <div>
-            <h1>User Page</h1>
-            {/* Votre contenu de page */}
+          <h1>Bienvenue, {userData.data}!</h1>
+          <p>Votre ID : {userData.dataId}</p>
+          <p>Votre rôle : {userData.dataRole}</p>
+          {/* Afficher d'autres informations de l'utilisateur si nécessaire */}
         </div>
-    );
+      )}
+    </div>
+  );
 };
+
 export default UserPage;

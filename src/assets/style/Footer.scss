@@ -1,0 +1,25 @@
+@import './variables.scss';
+
+*{
+    margin: 0;
+    padding: 0;
+}
+footer {
+    
+    background-color: $color1; /* Couleur de fond du pied de page */
+    padding: 20px; /* Espacement intérieur du pied de page */
+    text-align: center; /* Alignement du texte au centre */
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h4 {
+    
+        font-size: 20px; /* Taille de police */
+        color: $color4; /* Couleur du texte */
+      }
+  }
+  
+   
+  

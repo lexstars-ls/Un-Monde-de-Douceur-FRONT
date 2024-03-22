@@ -1,11 +1,32 @@
 import Header from "../../components/public/Header";
+import Footer from "../../components/public/Footer";
 import "../../assets/style/HomePage.scss";
 import img1 from "../../assets/img/222.png";
 import imgPresentation1 from "../../assets/img/imgProf.png";
 import imgBain from "../../assets/img/bainM.jpeg";
-import imgMassage from "../../assets/img/bain.jpeg"
-import Com from "./ReviewPage";
+import imgMassage from "../../assets/img/bain.jpeg";
+import { useEffect, useState } from "react";
 const HomePage = () => {
+  const [reviews, setReviews] = useState(null);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const reviewsResponse = await fetch(
+          "http://localhost:3001/api/reviews"
+        );
+        const reviewsResponseData = await reviewsResponse.json();
+        // Récupérer les 4 dernières critiques
+        const latestReviews = reviewsResponseData.slice(-4);
+        setReviews(latestReviews);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des critiques:", error);
+      }
+    };
+
+    fetchReviews();
+  }, []);
+
   return (
     <>
       <Header />
@@ -73,14 +94,14 @@ const HomePage = () => {
             <section>
               <h4>Le bain des Merveilles </h4>
               <p>
-                J’ai été formée au bain des Merveilles
-                par Aurélie Cachan, une fantastique infirmière puéricultrice qui
-                après recherche et pratique a crée cette technique de bain. Elle
-                est également une merveilleuse formatrice, soucieuse de nous
-                transmettre l’essence de sa pratique. Le bain des Merveilles est
-                un bain emmailloté permettant à bébé de retrouver les sensations
-                de la vie in utéro, de la position fœtale et de la naissance,
-                dans une atmosphère paisible et douce. Pendant la grossesse et l
+                J’ai été formée au bain des Merveilles par Aurélie Cachan, une
+                fantastique infirmière puéricultrice qui après recherche et
+                pratique a crée cette technique de bain. Elle est également une
+                merveilleuse formatrice, soucieuse de nous transmettre l’essence
+                de sa pratique. Le bain des Merveilles est un bain emmailloté
+                permettant à bébé de retrouver les sensations de la vie in
+                utéro, de la position fœtale et de la naissance, dans une
+                atmosphère paisible et douce. Pendant la grossesse et l
                 accouchement, bébé vit des tensions corporelles, psychiques et
                 émotionnelles, le bain des Merveilles favorise la modification
                 de toutes ses mémoires afin que bébé soit libéré d’un maximum de
@@ -111,57 +132,75 @@ const HomePage = () => {
             <section>
               <h4>Le massage bébé</h4>
               <p>
-                Je vous propose des ateliers massage pour que
-                vous appreniez à masser votre bébé. Les ateliers se font à
-                domicile en individuel ou à plusieurs si vous avez des amis
-                également intéressés. Les deux parents sont conviés à l’atelier
-                pour apprendre ensemble les gestes de massage. Pour apprendre à
-                masser l ensemble du corps de votre bébé, il est nécessaire de
-                réaliser 4 séance d’environ 1 h. 1 séance découverte 2 séance
-                soulager et apaiser les maux 3 séance apaiser les pleurs 4
-                favoriser la motricité Les gestes de massage vous seront montrés
-                sur un poupon pour que vous puissiez ensuite les reproduire sur
-                votre bébé. Les séances se font au rythme de votre bébé et en
-                tenant compte de sa disponibilité. Un ensemble de documents
-                ainsi qu’un accès à une application pour travailler seul chez
-                vous les mouvements, vous est remis après chaque atelier.
-                Pourquoi masser votre bébé ? Les bienfaits du massage sont
-                maintenant prouvés scientifiquement mais le massage existe
-                depuis la nuit des temps dans toutes les cultures. La culture
-                occidentale a juste perdue cette habitude si importante. De plus
-                le toucher est sens qui se développe en premier chez le fœtus et
-                qui perdure le plus longtemps dans le grand âge. On imagine
-                alors plus facilement toute son importance. Le massage favorise
-                Le lien d’attachement Bébé est sécurisé par le contact avec ses
-                parents. L’attention qu’on lui porte favorise son développement
-                et lui donne des bases solides pour construire sa confiance en
-                lui et en l’autre. La stimulation Le toucher active l’ensemble
-                des systèmes vitaux de bébé (circulatoire, digestif, hormonal,
-                immunitaire….) Bébé prend ainsi conscience de tout son corps et
-                de ses limites corporelles. Il construit son schéma corporel de
-                façon saine et sécure. Le soulagement Le massage soulage les
-                maux digestifs ( gaz, coliques, constipation….) Il soulage les
-                douleurs en général. La détente Les massages réalisés
-                régulièrement apaisent bébé et favorise son sommeil. Ils lui
-                permettent une meilleure régulation tonique et l’aide à être
-                connecté à ses ressentis corporels. Une meilleure régulation des
-                hormones de stress est observée ainsi qu’une augmentation de
-                l’hormone du bien être. Bébé profite d’un shoot d’ocytocine et
-                ses parents aussi! Les parents en effet apprennent à connaître
-                leur enfant, gagnent en confiance et en sérénité. La lactation
-                est stimulée chez les mamans et les complications du post partum
-                sont diminuées. Toutes les raisons sont bonnes pour vous former
-                au massage bébé alors n’hésitez pas!
+                Je vous propose des ateliers massage pour que vous appreniez à
+                masser votre bébé. Les ateliers se font à domicile en individuel
+                ou à plusieurs si vous avez des amis également intéressés. Les
+                deux parents sont conviés à l’atelier pour apprendre ensemble
+                les gestes de massage. Pour apprendre à masser l ensemble du
+                corps de votre bébé, il est nécessaire de réaliser 4 séance
+                d’environ 1 h. 1 séance découverte 2 séance soulager et apaiser
+                les maux 3 séance apaiser les pleurs 4 favoriser la motricité
+                Les gestes de massage vous seront montrés sur un poupon pour que
+                vous puissiez ensuite les reproduire sur votre bébé. Les séances
+                se font au rythme de votre bébé et en tenant compte de sa
+                disponibilité. Un ensemble de documents ainsi qu’un accès à une
+                application pour travailler seul chez vous les mouvements, vous
+                est remis après chaque atelier. Pourquoi masser votre bébé ? Les
+                bienfaits du massage sont maintenant prouvés scientifiquement
+                mais le massage existe depuis la nuit des temps dans toutes les
+                cultures. La culture occidentale a juste perdue cette habitude
+                si importante. De plus le toucher est sens qui se développe en
+                premier chez le fœtus et qui perdure le plus longtemps dans le
+                grand âge. On imagine alors plus facilement toute son
+                importance. Le massage favorise Le lien d’attachement Bébé est
+                sécurisé par le contact avec ses parents. L’attention qu’on lui
+                porte favorise son développement et lui donne des bases solides
+                pour construire sa confiance en lui et en l’autre. La
+                stimulation Le toucher active l’ensemble des systèmes vitaux de
+                bébé (circulatoire, digestif, hormonal, immunitaire….) Bébé
+                prend ainsi conscience de tout son corps et de ses limites
+                corporelles. Il construit son schéma corporel de façon saine et
+                sécure. Le soulagement Le massage soulage les maux digestifs (
+                gaz, coliques, constipation….) Il soulage les douleurs en
+                général. La détente Les massages réalisés régulièrement apaisent
+                bébé et favorise son sommeil. Ils lui permettent une meilleure
+                régulation tonique et l’aide à être connecté à ses ressentis
+                corporels. Une meilleure régulation des hormones de stress est
+                observée ainsi qu’une augmentation de l’hormone du bien être.
+                Bébé profite d’un shoot d’ocytocine et ses parents aussi! Les
+                parents en effet apprennent à connaître leur enfant, gagnent en
+                confiance et en sérénité. La lactation est stimulée chez les
+                mamans et les complications du post partum sont diminuées.
+                Toutes les raisons sont bonnes pour vous former au massage bébé
+                alors n’hésitez pas!
               </p>
             </section>
           </article>
+          <br />
 
           <h2>Derniers Commentaires</h2>
-         <Com />
 
+          {reviews ? (
+            <>
+              {reviews.map((review) => (
+                <article id="reviewArticle" key={review.id}>
+                  <p>{review.content}</p>
 
+                  {review.User && (
+                    <p>
+                      Par {review.User.username}, publié le{" "}
+                      {new Date(review.createdAt).toLocaleDateString()}
+                    </p>
+                  )}
+                </article>
+              ))}
+            </>
+          ) : (
+            <p>En cours de chargement</p>
+          )}
         </section>
       </main>
+      <Footer />
     </>
   );
 };
