@@ -31,7 +31,7 @@ const HomePage = () => {
     <>
       <Header />
 
-      <main className="home-page">
+      <main className="home-page-main">
         <section id="logo">
           <div className="imgContainer">
             <h1>Un Monde de Douceur</h1>
@@ -182,8 +182,9 @@ const HomePage = () => {
 
           {reviews ? (
             <>
+            <section id="sectionReviewMain">
               {reviews.map((review) => (
-                <article id="reviewArticle" key={review.id}>
+                <article id="reviewMain" key={review.id}>
                   <p>{review.content}</p>
 
                   {review.User && (
@@ -194,6 +195,7 @@ const HomePage = () => {
                   )}
                 </article>
               ))}
+              </section>
             </>
           ) : (
             <p>En cours de chargement</p>

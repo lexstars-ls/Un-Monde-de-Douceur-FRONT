@@ -7,131 +7,169 @@
 }
 
 
-  .home-page {
-    background-color: $color3;
+.home-page-main {
+  background-color: $color3;
 
-    #logo {
-      height: 100vh;
-      position: relative;
+  #logo {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color4;
+
+    .imgContainer {
+      width: 900px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: $color4;
 
-      .imgContainer {
-        width: 900px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      h1 {
+        font-size: 110px;
+        color: #ffffff;
 
-        h1 {
-          font-size: 110px;
-          color: #ffffff;
-          
-          opacity: 0.5;
-          position: absolute;
-          font-family: 'Macondo', cursive;
-          text-shadow: -1px 0 $color1, 0 1px $color1, 1px 0 $color1, 0 -1px $color1;
-          transition-property: text-shadow;
-          transition-duration: 200s;
-          transition-delay: 200s;
-        }
-
-
-        img {
-          width: 400px;
-          transition: width 100ms linear, display;
-
-        }
-
+        opacity: 0.5;
+        position: absolute;
+        font-family: 'Macondo', cursive;
+        text-shadow: -1px 0 $color1, 0 1px $color1, 1px 0 $color1, 0 -1px $color1;
+        transition-property: text-shadow;
+        transition-duration: 200s;
+        transition-delay: 200s;
       }
 
-      .imgContainer:hover {
-        h1 {
-          opacity: 1;
-          color: $color3;
-          z-index: 1;
-        }
 
-        img {
-          width: 25%;
-          z-index: 2;
-        }
+      img {
+        width: 400px;
+        transition: width 100ms linear, display;
+
       }
 
     }
 
-
-
-    #Background {
-      height: 100vh;
-      background-color: $color3;
-
-
-      article {
-        height: 50vh;
-        color: $color1;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-
-        img {
-          margin-left: 6%;
-          width: 300px;
-        }
-
-        section {
-
-          h2 {
-
-            font-size: 40px;
-            text-align: center;
-            color: $color2;
-            margin-bottom: 30px;
-            margin-right: 80px;
-          }
-
-          p {
-            text-align: start;
-            color: $color2;
-            width: 600px;
-          }
-        }
+    .imgContainer:hover {
+      h1 {
+        opacity: 1;
+        color: $color3;
+        z-index: 1;
       }
 
-
-
-    }
-
-    #prestation {
-      margin: 5%;
-      background-color: $color5;
-      padding: 5%;
-
-      h2 {
-        font-size: 40px;
-        text-align: center;
-        color: $color2;
+      img {
+        width: 25%;
+        z-index: 2;
       }
-
-      article {
-        color: $color1;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-
-        img {
-          width: 300px;
-        }
-
-      }
-
-      p {
-        text-align: start;
-        width: 500px;
-        color: $color2;
-      }
-
     }
 
   }
+
+
+
+  #Background {
+    height: 100vh;
+    background-color: $color3;
+
+
+    article {
+      height: 50vh;
+      color: $color1;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      img {
+        margin-left: 6%;
+        width: 300px;
+      }
+
+      section {
+
+        h2 {
+
+          font-size: 40px;
+          text-align: center;
+          color: $color2;
+          margin-bottom: 30px;
+          margin-right: 80px;
+        }
+
+        p {
+          text-align: start;
+          color: $color2;
+          width: 600px;
+        }
+      }
+    }
+
+
+
+  }
+
+  #prestation {
+    margin: 5%;
+    background-color: $color5;
+    padding: 5%;
+
+    h2 {
+      font-size: 40px;
+      text-align: center;
+      color: $color2;
+    }
+
+    article {
+      color: $color1;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      img {
+        width: 300px;
+      }
+
+    }
+
+    p {
+      text-align: start;
+      width: 500px;
+      color: $color2;
+    }
+
+  }
+
+  #sectionReviewMain {
+
+    padding-left: 10%;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2px 2px;
+
+
+    #reviewMain {
+      width: 100%;
+      display: block;
+      margin-top: 25px;
+
+
+
+      p {
+        width: 100%;
+        color: $color2;
+      
+
+        &:first-child {
+          font-size: 25px;
+          margin-bottom: 10px;
+          color: $color2;
+        }
+
+        &:last-child {
+          font-size: 22px;
+          color: #555;
+          font-weight: bolder;
+        }
+      }
+    }
+  }
+
+}
