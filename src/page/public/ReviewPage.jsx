@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import '../../assets/style/ReviewPage.scss';
-
+import Header from "../../components/public/Header";
+import Footer from "../../components/public/Footer";
 const ReviewPage = () => {
   const [reviews, setReviews] = useState(null);
 
@@ -19,7 +20,10 @@ const ReviewPage = () => {
   }, []);
 
   return (
-    <main>
+    <>
+    <Header/>
+
+    <main id="MainReviewPage">
       {reviews ? (
         <>
           {reviews.map((review) => (
@@ -39,6 +43,8 @@ const ReviewPage = () => {
         <p>En cours de chargement</p>
       )}
     </main>
+    <Footer/>
+    </>
   );
 };
 

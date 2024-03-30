@@ -1,81 +1,68 @@
-// Importe le hook useState de React
-import React, { useState } from "react";
-
-// Importe le hook custom useVerifyIfUserIsLogged
-// qui permet de vérifier si l'utilisateur est connecté
-import { useVerifyIfUserIsLogged } from "../../utils/security-utils";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-// Définition du composant UserCreateReview
-const UserCreateReview = () => {
-  // Utilisation du hook custom useVerifyIfUserIsLogged
-  // pour vérifier si l'utilisateur est connecté
-  useVerifyIfUserIsLogged();
-
-  // Déclaration des états pour le contenu de la review, le message de retour et le délai avant la redirection
-  const [content, setContent] = useState("");
+const UserCreateReviewPage = () => {
+  const [formData, setFormData] = useState({
+    content: "",
+  });
   const [message, setMessage] = useState(null);
-
-  // Utilisation de useNavigate pour la redirection
   const navigate = useNavigate();
 
-  // Fonction appelée lors de la soumission du formulaire
-  const handleCreateReview = async (event) => {
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Récupération du token depuis le localStorage
+    const { content } = formData;
+
+    const reviewData = {
+      content: content,
+    };
+    const reviewDataJson = JSON.stringify(reviewData);
+
     const token = localStorage.getItem("jwt");
 
-    // Vérifie si le token est présent
-    if (!token) {
-      console.log("Token non trouvé dans le localStorage");
-      return;
-    }
+    const reviewResponse = await fetch("http://localhost:3001/api/reviews", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}` // Ajout du token JWT dans l'en-tête de la requête
+      },
+      body: reviewDataJson,
+    });
 
-    // Appel à l'API pour créer une nouvelle review
-    const createReviewResponse = await fetch(
-      "http://localhost:3001/api/reviews",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-        body: JSON.stringify({ content }),
-      }
-    );
-    // Utilisation de la méthode ok pour vérifier si le statut est dans la plage 200-299
-    if (createReviewResponse.ok) {
-      setMessage("Commentaire créé !");
-
-      // Ajout d'un délai de 2 secondes avant la redirection
+    if (reviewResponse.status === 201) {
+      setMessage("Votre critique a été créée avec succès");
       setTimeout(() => {
-        // Redirection vers la page d'accueil
         navigate("/");
-        // Tu peux effectuer d'autres actions ici si nécessaire.
       }, 2000);
     } else {
-      setMessage("Erreur !");
+      setMessage("Erreur lors de la création de la critique");
     }
   };
 
-  // Rendu du composant avec un formulaire
   return (
-    <div>
-      <form onSubmit={handleCreateReview}>
-        <input type="hidden" name="token" value={localStorage.getItem("jwt")} />
-        <textarea
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="Écris ta review ici"
-          required
-        ></textarea>
-        <button type="submit">Poster la review</button>
-      </form>
-      {/* Affichage du message de retour */}
+    <main>
+      <h2>Créer une critique</h2>
       {message && <p>{message}</p>}
-    </div>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Contenu de la critique:
+          <textarea
+            placeholder="Contenu de la critique"
+            name="content"
+            value={formData.content}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <button type="submit">Créer</button>
+      </form>
+    </main>
   );
 };
 
-// Exporte le composant UserCreateReview
-export default UserCreateReview;
+export default UserCreateReviewPage;

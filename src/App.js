@@ -6,7 +6,7 @@ import UserReviewCreate from "./page/public/UserCreateReview";
 import DashboardPage from "./page/admin/DashboardPage";
 import CreateUserPage from "./page/public/CreateUserPage";
 import UserPage from "./page/public/UserPage";
-
+import ParcoursPage from "./page/public/ParcoursPage";
 function App() {
   return (
     <Router>
@@ -17,6 +17,7 @@ function App() {
         <Route path="/loginPage" element={<LoginPage />} />
         <Route path="/createUserPage" element={<CreateUserPage />} />
         <Route path="/profilPage" element={<UserPage />} />
+        <Route path="/Parcours" element={<ParcoursPage />} />
 
 
         <Route path="/reviewPage" element={<ReviewPage />} />

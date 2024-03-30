@@ -9,7 +9,8 @@ const UserPage = () => {
 
     if (token) {
       const decodedToken = jwtDecode(token);
-      setUserData(decodedToken); // Stocker les informations de l'utilisateur dans le state
+      console.log(decodedToken); // Affiche le contenu du token JWT dans la console
+      setUserData(decodedToken); // Stocke les informations de l'utilisateur dans le state
     }
   }, []);
 
@@ -17,10 +18,10 @@ const UserPage = () => {
     <div>
       {userData && (
         <div>
-          <h1>Bienvenue, {userData.data}!</h1>
-          <p>Votre ID : {userData.dataId}</p>
-          <p>Votre rôle : {userData.dataRole}</p>
-          {/* Afficher d'autres informations de l'utilisateur si nécessaire */}
+          <h1>Bienvenue, {userData.dataUsername}!</h1>
+          <p>Votre Email : {userData.data}</p>
+          
+          {/* Affichez d'autres informations de l'utilisateur si nécessaire */}
         </div>
       )}
     </div>

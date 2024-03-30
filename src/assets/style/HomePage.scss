@@ -155,7 +155,7 @@
       p {
         width: 100%;
         color: $color2;
-      
+
 
         &:first-child {
           font-size: 25px;
@@ -171,5 +171,53 @@
       }
     }
   }
+
+  #diaporama {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    #diaporamaContainer {
+      position: relative;
+      width: 600px;
+      height: 600px;
+
+
+      button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.7);
+        }
+      }
+
+      #imageBtnPrev {
+        left: 20px;
+      }
+
+      #imageBtnNext {
+        right: 20px;
+      }
+
+      #diaporamaImage {
+        width: 600px;
+        height: 600px;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+
+      }
+    }
+  }
+
+
 
 }

@@ -11,6 +11,7 @@ const Header = () => {
   );
   
   const handleLogout = () => {
+    localStorage.removeItem("jwt");
     setIsLoggedIn(false); // Met à jour l'état de connexion
     navigate("/"); // Redirige vers la page d'accueil
   };
@@ -29,7 +30,7 @@ const Header = () => {
             <a href="/createReview">Prestations</a>
           </li>
           <li>
-            <a href="/reviewPage">Galerie</a>
+            <a href="/reviewPage">Avis</a>
           </li>
 
           {/* affichage des Boutons votre profil et décon après vérification de l'identification de mon utilisateur */}

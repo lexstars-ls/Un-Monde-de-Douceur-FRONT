@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#mainParcoursPage {
+    padding-top: 100px; // Ajoutez une marge supérieure au main pour décaler le contenu en dessous du header
+    display: flex;
+    
+    justify-content: center;
+    ul {
+    
+ background-color: aqua;
+      padding: 0;
+      margin: 0;
+      width: 60%;
+      height: 100%;
+      li {
+        height: 200px;
+        margin-bottom: 20px; // Espace entre chaque li
+        display: flex;
+        flex-direction: column;
+  
+        p {
+          margin-top: 10px; // Espacement entre le texte et le paragraphe suivant
+        }
+      }
+    }
+  }
+  
