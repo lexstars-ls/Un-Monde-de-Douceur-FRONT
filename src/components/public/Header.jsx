@@ -27,10 +27,10 @@ const Header = () => {
             <a href="/parcours">Parcours</a>
           </li>
           <li>
-            <a href="/createReview">Prestations</a>
+            <a href="/createReview">Galerie</a>
           </li>
           <li>
-            <a href="/reviewPage">Avis</a>
+            <a href="/reviewPage">Contact</a>
           </li>
 
           {/* affichage des Boutons votre profil et décon après vérification de l'identification de mon utilisateur */}

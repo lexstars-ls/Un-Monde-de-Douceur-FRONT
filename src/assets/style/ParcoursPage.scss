@@ -1,29 +1,44 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
+
 #mainParcoursPage {
-    padding-top: 100px; // Ajoutez une marge supérieure au main pour décaler le contenu en dessous du header
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+
+  .article {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
     display: flex;
-    
-    justify-content: center;
-    ul {
-    
- background-color: aqua;
-      padding: 0;
-      margin: 0;
+    justify-content: space-around;
+
+    .article-image {
+      max-width: 200px;
+      height: auto;
+      margin-right: 20px;
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
       width: 60%;
-      height: 100%;
-      li {
-        height: 200px;
-        margin-bottom: 20px; // Espace entre chaque li
-        display: flex;
-        flex-direction: column;
+     
+    }
+
+    .article-title {
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .article-text {
+      font-size: 16px;
   
-        p {
-          margin-top: 10px; // Espacement entre le texte et le paragraphe suivant
-        }
-      }
+
     }
   }
-  
+}

@@ -4,8 +4,9 @@ const UploadImages = () => {
   const [galleries, setGalleries] = useState([]);
   const [selectedGallery, setSelectedGallery] = useState("");
   const [images, setImages] = useState([]);
-  const [error, setError] = useState("");
+
   const [token, setToken] = useState("");
+  const [message, setMessage] = useState(null);
 
   useEffect(() => {
     // Récupérer le token JWT depuis le stockage local (localStorage)
@@ -13,8 +14,8 @@ const UploadImages = () => {
     if (storedToken) {
       setToken(storedToken);
     }
-    console.log(storedToken);
-    // récup mes galeries disponible.
+
+    // récupérer les galeries disponibles
     const fetchGalleries = async () => {
       try {
         const response = await fetch("http://localhost:3001/api/gallery", {
@@ -26,10 +27,10 @@ const UploadImages = () => {
           const data = await response.json();
           setGalleries(data);
         } else {
-          setError("Erreur lors de la récupération des galeries");
+          throw new Error("Erreur lors de la récupération des galeries");
         }
       } catch (error) {
-        setError("Erreur lors de la récupération des galeries");
+        setMessage(error.message);
       }
     };
 
@@ -47,7 +48,7 @@ const UploadImages = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!selectedGallery || images.length === 0) {
-      setError("Veuillez sélectionner une galerie et au moins une image.");
+      setMessage("Veuillez sélectionner une galerie et au moins une image.");
       return;
     }
 
@@ -68,19 +69,19 @@ const UploadImages = () => {
         }
       );
       if (response.ok) {
-        const data = await response.json();
-        console.log(data);
+        setMessage("Le téléchargement d'images a été un succès.");
       } else {
-        setError("Erreur lors de l'upload des images");
+        throw new Error("Erreur lors de l'upload des images");
       }
     } catch (error) {
-      setError("Erreur lors de l'upload des images");
+      setMessage(error.message);
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      {error && <div style={{ color: "red" }}>{error}</div>}
+      
+      <h3>{message}</h3>
       <div>
         <label htmlFor="gallery">Sélectionner une galerie :</label>
         <select
