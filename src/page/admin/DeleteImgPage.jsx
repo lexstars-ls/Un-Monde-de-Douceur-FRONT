@@ -66,7 +66,18 @@ const DeleteImgPage = () => {
     if (selectedGallery) {
       fetchImages(); // Appeler la fonction pour récupérer les images
     }
-  }, [selectedGallery, token ,]); // Exécuter cet effet chaque fois que `selectedGallery` ou `token` change
+  }, [selectedGallery, token]); // Exécuter cet effet chaque fois que `selectedGallery` ou `token` change
+
+  // useEffect pour faire disparaître le message d'erreur après un délai
+  useEffect(() => {
+    if (errorMessage) {
+      const timer = setTimeout(() => {
+        setErrorMessage('');
+      }, 5000); // Le message disparaît après 5 secondes
+
+      return () => clearTimeout(timer); // Nettoyage de l'effet
+    }
+  }, [errorMessage]); // Exécuter cet effet chaque fois que `errorMessage` change
 
   // Fonction pour supprimer une image
   const handleDelete = async (imageId) => {
@@ -83,7 +94,7 @@ const DeleteImgPage = () => {
       if (response.ok) {
         // Mettre à jour l'état des images en filtrant l'image supprimée
         setImages(images.filter((image) => image.id !== imageId));
-        setErrorMessage("supression réussite")
+        setErrorMessage("Suppression réussie");
       } else {
         setErrorMessage("Erreur lors de la suppression de l'image"); // Mettre à jour l'état des messages d'erreur en cas d'échec
       }

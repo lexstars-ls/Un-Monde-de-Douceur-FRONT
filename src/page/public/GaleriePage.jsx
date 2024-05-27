@@ -1,34 +1,54 @@
 import React, { useState, useEffect } from "react";
+import "../../assets/style/GaleriePage.scss";
+import Header from "../../components/public/Header";
+import Footer from "../../components/public/Footer";
 
 const Galerie = () => {
-  const [images, setImages] = useState([]);
+  const [galeries, setGaleries] = useState([]);
 
   useEffect(() => {
-    fetchImages();
+    const fetchGaleries = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/api/gallery"); // route pour récupérer les galeries + leurs images
+        if (!response.ok) {
+          throw new Error("Erreur lors de la récupération des galeries");
+        }
+        const data = await response.json();
+        setGaleries(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchGaleries();
   }, []);
 
-  const fetchImages = async () => {
-    try {
-      const response = await fetch("http://localhost:3001/api/image/1");
-      if (!response.ok) {
-        throw new Error("Erreur lors de la récupération des images");
-      }
-      const data = await response.json();
-      setImages(data); // L'ensemble des données est retourné directement par l'API
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
-    <div>
-      <h1>Galerie d'images</h1>
-      <div className="images-container">
-        {images.map((image) => (
-          <img key={image.id} src={image.imageUrl} alt={`Image ${image.id}`} />
+    <>
+    <Header />
+    <main id="galerieMain">
+      <div>
+        <h1>Galerie d'images</h1>
+        {galeries.map((galerie) => (
+          <div key={galerie.id}>
+            <h2>{galerie.name}</h2>
+            <p>Année: {galerie.year}</p>
+            <div className="images-container">
+              {galerie.Images.length > 0 ? (
+                galerie.Images.map((image) => (
+                  <img key={image.id} src={image.imageUrl} alt={`Image ${image.id}`} />
+                ))
+              ) : (
+                <div>Cette galerie est vide pour le moment</div>
+              )}
+            </div>
+          </div>
         ))}
       </div>
-    </div>
+    </main>
+    <Footer />
+  </>
+  
+    
   );
 };
 

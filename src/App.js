@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // client
 import LoginPage from "./page/public/LoginPage";
 import HomePage from "./page/public/HomePage";
-import ReviewPage from "./page/public/ReviewPage";
-import UserReviewCreate from "./page/public/UserCreateReview";
+
+
 import UserPage from "./page/public/UserPage";
-import ParcoursPage from "./page/public/ParcoursPage";
+import PrestationPage from "./page/public/PrestationPage";
 import CreateUserPage from "./page/public/CreateUserPage";
+import GaleriePage from "./page/public/GaleriePage";
 
 // admin
 import DashboardPage from "./page/admin/DashboardPage";
@@ -26,11 +27,13 @@ function App() {
         <Route path="/loginPage" element={<LoginPage />} />
         <Route path="/createUserPage" element={<CreateUserPage />} />
         <Route path="/profilPage" element={<UserPage />} />
-        <Route path="/Parcours" element={<ParcoursPage />} />
+        <Route path="/prestations" element={<PrestationPage />} />
+
+        {/* page de galerie */}
+        <Route path="/Galerie" element={<GaleriePage />} />
 
         {/* utilisateur Review */}
-        <Route path="/reviewPage" element={<ReviewPage />} />
-        <Route path="/createReview" element={<UserReviewCreate />} />
+       
 
         {/* admin */}
         <Route path="/admin" element={<DashboardPage />} />

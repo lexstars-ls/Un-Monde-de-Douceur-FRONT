@@ -46,10 +46,14 @@ const LoginPage = () => {
 
       // Décodage du token pour obtenir les informations utilisateur, notamment le rôle
       const decodedToken = jwtDecode(token);
-      console.log(decodedToken.dataRole);
+      console.log(decodedToken);
       console.log(decodedToken.dataId);
       // Redirection en fonction du rôle de l'utilisateur
-      if (decodedToken.dataRole <= 2) {
+      // ne pas utiliser ID utiliser le label!
+      if (
+        decodedToken.datarolelabel === "admin" ||
+        decodedToken.datarolelabel === "superadmin"
+      ) {
         setMessage("Vous êtes bien connecté en tant qu'admin");
         setTimeout(() => {
           navigate("/admin");

@@ -17,7 +17,7 @@ const Header = () => {
   };
 
   return (
-    <header>
+    <header id="headerUser">
       <nav>
         <ul>
           <li>
@@ -27,7 +27,10 @@ const Header = () => {
             <a href="/parcours">Parcours</a>
           </li>
           <li>
-            <a href="/createReview">Galerie</a>
+            <a href="/prestations">Prestations</a>
+          </li>
+          <li>
+            <a href="/Galerie">Galerie</a>
           </li>
           <li>
             <a href="/reviewPage">Contact</a>
