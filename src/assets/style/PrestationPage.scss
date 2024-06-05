@@ -1,0 +1,105 @@
+@import './variables.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#mainParcoursPage {
+  min-height: 80vh;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $color3;
+
+  .article {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    width: 95%;
+    min-height: 50vh;
+    border-radius: 5px;
+    background-color: $color5;
+    display: flex;
+    justify-content: space-around;
+
+    h2 {
+      margin: 50px;
+      text-decoration: underline;
+    }
+
+    .imageContainer {
+      display: flex;
+      align-items: center;
+    
+    }
+
+
+    section {
+      display: flex;
+      flex-direction: column;
+      width: 60%;
+
+    }
+
+    .article-title {
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .article-text {
+      font-size: 16px;
+
+
+    }
+  }
+
+  .containerReview {
+    text-align: center;
+  
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  
+      label {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+  
+      textarea {
+        width: 100%;
+        max-width: 400px;
+        height: 100px;
+        padding: 10px;
+       
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: vertical; // Permet à l'utilisateur de redimensionner la zone de texte verticalement
+      }
+  
+      button {
+        @extend .bouton;
+        margin-bottom: 50px;
+  
+        &:hover {
+          color: $color4;
+          background-color: $color1;
+        }
+      }
+    }
+  
+    p {
+      margin-top: 20px;
+      color: green;
+    }
+  }
+  
+}

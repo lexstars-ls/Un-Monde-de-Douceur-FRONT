@@ -9,6 +9,12 @@
   background-color: $color3;
   text-align: center;
 
+  h2 {
+    font-size: 30px;
+    text-decoration: underline;
+    color: $color1;
+  }
+
   #logo {
     height: 100vh;
     position: relative;
@@ -103,38 +109,106 @@
     height: auto;
     width: 100%;
     display: grid;
-    
+
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 4px;
-    grid-row-gap: 4px;
-    text-align: center;
-  
     
 
-    #circle {
-      background-color: aqua;
-      height: 50px;
-      width: 50px;
-      border-radius: 30px;
-    }
+    grid-row-gap: 4px;
+    text-align: center;
 
-    section {
-      border: 1px $color1 solid;
-      background: rgba($color1, .1);
-      
+   
+    .reviewArticle {
+
       height: 100px;
-      p {
-        color: $color2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+
+      section {
+        min-width: 500px;
+        max-width: 700px;
+        h4{
+          color: $color1;
+          text-decoration: underline;
+        }
+        text-align: start;
+
+        p{
+          color: $color2;
+        
+        }
+        
 
       }
     }
-    button{
-      background-color: red;
-      width: 200px;
-     
+  }
 
+  #title-review {
+    margin: 50px;
+  }
+
+  #button-review {
+    background-color: $color4;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 200px;
+    color: $color1;
+    margin: 50px;
+  }
+
+  #button-review:hover {
+    background-color: unset;
+    border: solid $color4 1px;
+    color: $color4;
+  }
+
+  .contact-page {
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .contact-details {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      .contact-item {
+        display: flex;
+        flex-direction: column;
+        height: 200px;
+        width: 300px;
+        font-size: 18px;
+        color: $color2;
+
+        h4 {
+          padding-bottom: 25px;
+          color: $color1;
+        }
+
+        svg {
+
+          font-size: 35px;
+          color: $color2;
+          padding-bottom: 20px;
+        }
+
+      }
     }
 
+    .social-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      svg {
+        font-size: 35px;
+        padding-left: 50px;
+        padding-right: 50px;
+        color: $color2;
+      }
+    }
   }
 }

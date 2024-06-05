@@ -1,6 +1,6 @@
 import Header from "../../components/public/Header";
 import Footer from "../../components/public/Footer";
-import "../../assets/style/ParcoursPage.scss";
+import "../../assets/style/PrestationPage.scss";
 import { useState, useEffect } from "react";
 
 const PrestationPage = () => {
@@ -55,9 +55,13 @@ const PrestationPage = () => {
       if (response.ok) {
         setMessage("Commentaire créé avec succès.");
         setContent("");
+        console.log(storedToken)
+        console.log(content)
       } else {
         const errorData = await response.json();
-        throw new Error(errorData.message || "Erreur lors de la création du commentaire");
+        throw new Error(
+          errorData.message || "Erreur lors de la création du commentaire"
+        );
       }
     } catch (error) {
       setMessage(error.message);
@@ -74,13 +78,31 @@ const PrestationPage = () => {
       <Header />
       <main id="mainParcoursPage">
         {articles.length > 0 ? (
-          articles.map((article) => (
+          articles.map((article, index) => (
             <div key={article.id} className="article">
-              <img src={article.image} className="article-image" alt={article.title} />
-              <section>
-                <h2 className="article-title">{article.title}</h2>
-                <p className="article-text">{article.text}</p>
-              </section>
+              {index % 2 === 0 && ( // Vérifie si l'index est pair
+                <section>
+                  <h2 className="article-title">{article.title}</h2>
+                  {article.text && (
+                    <p className="article-text">{article.text}</p>
+                  )}
+                </section>
+              )}
+              <div className="imageContainer">
+                <img
+                  src={article.image}
+                  className="article-image"
+                  alt={article.title}
+                />
+              </div>
+              {index % 2 !== 0 && ( // Vérifie si l'index est impair
+                <section>
+                  <h2 className="article-title">{article.title}</h2>
+                  {article.text && (
+                    <p className="article-text">{article.text}</p>
+                  )}
+                </section>
+              )}
             </div>
           ))
         ) : (
@@ -89,23 +111,24 @@ const PrestationPage = () => {
 
         {/* Affichage conditionnel du formulaire de commentaire */}
         {isLogged && (
-          <div>
-            <h1>Créer un Commentaire</h1>
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="content">Commentaire :</label>
-              <textarea
-                id="content"
-                name="content"
-                rows="4"
-                cols="50"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-              />
-              <br />
-              <button type="submit">Soumettre</button>
-            </form>
-            {message && <p>{message}</p>}
-          </div>
+       <div className="containerReview">
+       <h1>Laisser un Commentaire</h1>
+       <form onSubmit={handleSubmit}>
+         <label htmlFor="content">Commentaire :</label>
+         <textarea
+           id="content"
+           name="content"
+           rows="4"
+           cols="50"
+           value={content}
+           onChange={(e) => setContent(e.target.value)}
+         />
+         <br />
+         <button type="submit">Soumettre</button>
+       </form>
+       {message && <p>{message}</p>}
+     </div>
+     
         )}
       </main>
       <Footer />

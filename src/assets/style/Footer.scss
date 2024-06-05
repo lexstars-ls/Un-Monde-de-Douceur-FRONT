@@ -1,25 +1,37 @@
 @import './variables.scss';
 
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
-footer {
-    
-    background-color: $color1; /* Couleur de fond du pied de page */
-    padding: 20px; /* Espacement intérieur du pied de page */
-    text-align: center; /* Alignement du texte au centre */
-    height: 10vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-    h4 {
-    
-        font-size: 20px; /* Taille de police */
-        color: $color4; /* Couleur du texte */
-      }
+footer {
+  background-color: $color1; /* Couleur de fond du pied de page */
+  padding: 20px; /* Espacement intérieur du pied de page */
+  text-align: center; /* Alignement du texte au centre */
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h4 {
+    font-size: 20px; /* Taille de police */
+    color: $color4; /* Couleur du texte */
   }
-  
-   
-  
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espacement entre les icônes */
+
+    a {
+      color: $color4; /* Couleur des icônes */
+      font-size: 24px; /* Taille des icônes */
+      transition: color 0.3s;
+
+      &:hover {
+        color: $color2; /* Couleur des icônes au survol */
+      }
+    }
+  }
+}

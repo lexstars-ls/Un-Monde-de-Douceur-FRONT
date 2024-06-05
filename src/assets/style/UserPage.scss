@@ -1,0 +1,77 @@
+#UserPageMain {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+padding-top: 200px;
+
+  .user-profile {
+    margin-bottom: 20px;
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .user-profile-form {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        margin-bottom: 10px;
+
+        input {
+          margin-top: 5px;
+          padding: 5px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+        }
+      }
+
+      .btn-update-profile {
+        margin-top: 10px;
+        padding: 5px 10px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+  }
+
+  .review-container {
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .review-item {
+      margin-bottom: 10px;
+
+      input {
+        margin-right: 10px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 800px;
+        height: auto;
+      }
+
+      .btn-delete-review {
+        padding: 5px 10px;
+        border: none;
+        background-color: #dc3545;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #bd2130;
+        }
+      }
+    }
+  }
+}

@@ -33,7 +33,7 @@ const Header = () => {
             <a href="/Galerie">Galerie</a>
           </li>
           <li>
-            <a href="/reviewPage">Contact</a>
+            <a href="/contact">Contact</a>
           </li>
 
           {/* affichage des Boutons votre profil et décon après vérification de l'identification de mon utilisateur */}

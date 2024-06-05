@@ -28,6 +28,8 @@ function App() {
         <Route path="/createUserPage" element={<CreateUserPage />} />
         <Route path="/profilPage" element={<UserPage />} />
         <Route path="/prestations" element={<PrestationPage />} />
+        <Route path="/prestations" element={<PrestationPage />} />
+       
 
         {/* page de galerie */}
         <Route path="/Galerie" element={<GaleriePage />} />
