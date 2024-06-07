@@ -1,0 +1,45 @@
+@import './variables.scss';
+#main-tarif {
+
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: $color5;
+
+    section {
+        background-color: $color4;
+        width: 300px;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        text-align: center;
+        transition: scale 0.3s ease-in-out;
+
+        .image-container {
+           width: 100%; 
+           height: 50%; 
+          
+           overflow: hidden;
+
+            img {
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+            }
+        }
+
+        .text-container {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px; 
+            height: 50%; 
+            color: $color1;
+        }
+    }
+    section:hover{
+        scale: 1.2;
+    }
+}

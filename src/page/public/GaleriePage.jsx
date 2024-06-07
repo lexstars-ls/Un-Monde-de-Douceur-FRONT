@@ -26,7 +26,7 @@ const Galerie = () => {
     <>
     <Header />
     <main id="galerieMain">
-      <div>
+      <div id="container-gallery">
         <h1>Galerie d'images</h1>
         {galeries.map((galerie) => (
           <div key={galerie.id}>
@@ -35,10 +35,10 @@ const Galerie = () => {
             <div className="images-container">
               {galerie.Images.length > 0 ? (
                 galerie.Images.map((image) => (
-                  <img key={image.id} src={image.imageUrl} alt={`Image ${image.id}`} />
+                  <img key={image.id} src={image.imageUrl} alt={`${image.id}`} />
                 ))
               ) : (
-                <div>Cette galerie est vide pour le moment</div>
+                <h4>Cette galerie est vide pour le moment</h4>
               )}
             </div>
           </div>

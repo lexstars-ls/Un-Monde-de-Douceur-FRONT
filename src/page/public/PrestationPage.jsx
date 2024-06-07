@@ -90,7 +90,8 @@ const PrestationPage = () => {
               )}
               <div className="imageContainer">
                 <img
-                  src={article.image}
+                  src={article.imageUrl}
+                  
                   className="article-image"
                   alt={article.title}
                 />

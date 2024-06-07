@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // client
 import LoginPage from "./page/public/LoginPage";
 import HomePage from "./page/public/HomePage";
-
-
 import UserPage from "./page/public/UserPage";
+
 import PrestationPage from "./page/public/PrestationPage";
+import TarifPage from "./page/public/TarifPage";
 import CreateUserPage from "./page/public/CreateUserPage";
 import GaleriePage from "./page/public/GaleriePage";
 
@@ -28,15 +28,15 @@ function App() {
         <Route path="/createUserPage" element={<CreateUserPage />} />
         <Route path="/profilPage" element={<UserPage />} />
         <Route path="/prestations" element={<PrestationPage />} />
-        <Route path="/prestations" element={<PrestationPage />} />
+        <Route path="/tarifs" element={<TarifPage />} />
+        
        
 
         {/* page de galerie */}
         <Route path="/Galerie" element={<GaleriePage />} />
 
-        {/* utilisateur Review */}
-       
-
+      
+      
         {/* admin */}
         <Route path="/admin" element={<DashboardPage />} />
         <Route path="/admin/Galerie" element={<GalleryCrudPage />} />

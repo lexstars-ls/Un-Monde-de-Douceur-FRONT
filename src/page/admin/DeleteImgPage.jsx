@@ -129,7 +129,7 @@ const DeleteImgPage = () => {
           <ul>
             {images.map((image) => (
               <li key={image.id}>
-                <img src={image.imageUrl} alt={`Image ${image.id}`} />
+                <img src={image.imageUrl} alt={`${image.id}`} />
                 <button onClick={() => handleDelete(image.id)}>Supprimer</button>
               </li>
             ))}

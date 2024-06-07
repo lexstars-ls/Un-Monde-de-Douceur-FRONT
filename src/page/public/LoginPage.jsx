@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../assets/style/LoginPage.scss";
 import { jwtDecode } from "jwt-decode"; // Import de la fonction jwtDecode
+import Header from "../../components/public/Header";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -72,6 +73,8 @@ const LoginPage = () => {
   };
 
   return (
+    <>
+    <Header/>
     <main className="loginpage-main">
       <section id="sectionLogin">
         {message && <p>{message}</p>}
@@ -91,6 +94,7 @@ const LoginPage = () => {
         </form>
       </section>
     </main>
+    </>
   );
 };
 

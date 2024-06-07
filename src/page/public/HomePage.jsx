@@ -9,6 +9,8 @@ import {
   faPhone,
   faEnvelope,
   faMapMarkerAlt,
+  faChevronLeft,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 const HomePage = () => {
@@ -84,7 +86,7 @@ const HomePage = () => {
       setCurrentIndex((prevIndex) =>
         prevIndex < images.length - 1 ? prevIndex + 1 : 0
       );
-    }, 5000); // Changement d'image toutes les 5 secondes
+    }, 9000); // Changement d'image toutes les 5 secondes
 
     // Nettoyage de l'intervalle lors du démontage du composant
     return () => clearInterval(interval);
@@ -114,13 +116,40 @@ const HomePage = () => {
             <h1>Un Monde de Douceur</h1>
             <img src={img1} alt="bébé" />
           </div>
+          <div class="background">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </section>
 
         {/* Section du diaporama */}
+
         <section id="diaporama">
+          <h2>
+            N'oubliez pas de réserver votre séance avant la fin du dernier mois
+            de grossesse.
+          </h2>
           <div id="diaporamaContainer">
             <button onClick={showPrevImage} id="imageBtnPrev">
-              prev
+              <FontAwesomeIcon icon={faChevronLeft} />
             </button>
             {/* Affichage de l'image actuelle du diaporama */}
             {images.length > 0 ? (
@@ -131,91 +160,99 @@ const HomePage = () => {
                 }}
               />
             ) : (
-              <div id="diaporamaImage">pas d'image trouvé</div>
+              <p>pas d'image trouvé</p>
             )}
             <button onClick={showNextImage} id="imageBtnNext">
-              next
+              <FontAwesomeIcon icon={faChevronRight} />
             </button>
           </div>
         </section>
 
         {/* Section des avis */}
-        <h2 id="title-review">Derniers commentaires:</h2>
-        <section id="sectionReviews">
-          {/* Affichage des avis en fonction de l'état showAllReviews */}
-          {showAllReviews
-            ? review.map((review) => (
-                <article className="reviewArticle" key={review.id}>
-                  <section>
-                    <div id="circle"></div>
-                    <h4>Par {review.User.username}</h4>
-                    
-                    <p>
-                      {review.content}. , publié le{" "}
-                      {new Date(review.createdAt).toLocaleDateString()}
-                    </p>
-                  </section>
-                </article>
-              ))
-            : last4review.map((review) => (
-                <article className="reviewArticle" key={review.id}>
-                  <section>
+        <section id="container-review">
+          <h2 id="title-review">Derniers commentaires:</h2>
+          <section id="sectionReviews">
+            {/* Affichage des avis en fonction de l'état showAllReviews */}
+            {showAllReviews
+              ? review.map((review) => (
+                  <article className="reviewArticle" key={review.id}>
+                    <section>
+                      <div id="circle"></div>
+                      <h4>Par {review.User.username}</h4>
 
-                  <h4>Par {review.User.username}</h4>
-                    <p>
-                      {review.content}. , publié le{" "}
-                      {new Date(review.createdAt).toLocaleDateString()}
-                    </p>
-                  </section>
-                </article>
-              ))}
-        </section>
-         {/* Bouton pour basculer entre l'affichage de tous les avis et seulement les 4 derniers */}
-         <button id="button-review" onClick={toggleShowAllReviews}>
+                      <p>
+                        {review.content}. , publié le{" "}
+                        {new Date(review.createdAt).toLocaleDateString()}
+                      </p>
+                    </section>
+                  </article>
+                ))
+              : last4review.map((review) => (
+                  <article className="reviewArticle" key={review.id}>
+                    <section>
+                      <h4>Par {review.User.username}</h4>
+                      <p>
+                        {review.content}. , publié le{" "}
+                        {new Date(review.createdAt).toLocaleDateString()}
+                      </p>
+                    </section>
+                  </article>
+                ))}
+          </section>
+          {/* Bouton pour basculer entre l'affichage de tous les avis et seulement les 4 derniers */}
+          <button id="button-review" onClick={toggleShowAllReviews}>
             {showAllReviews
               ? "Afficher moins de commentaires"
               : "Afficher tous les commentaires"}
           </button>
+        </section>
 
-        <h2>Contactez-moi</h2>
-        <div className="contact-page">
-          <div className="contact-details">
-            <div className="contact-item">
-              <FontAwesomeIcon icon={faMapMarkerAlt} />
-              <h4>Localisation où j'interviens</h4>
-              <p>Essonne, Seine et Marne, Paris alentours</p>
+        <section id="contact-container">
+          <h2>Contactez-moi</h2>
+          <div className="contact-page">
+            <div className="contact-details">
+              <div className="contact-item">
+                <FontAwesomeIcon icon={faMapMarkerAlt} />
+                <div>
+                  <h4>Localisation où j'interviens</h4>
+                  <p>Essonne, Seine et Marne, Paris alentours</p>
+                </div>
+              </div>
+
+              <div className="contact-item">
+                <FontAwesomeIcon icon={faPhone} />
+                <div>
+                  <h4>Téléphone</h4>
+                  <p>(123) 456-7890</p>
+                </div>
+              </div>
+              <div className="contact-item">
+                <FontAwesomeIcon icon={faEnvelope} />
+                <div>
+                  <h4>Adresse electronique</h4>
+                  <p>contact@mondededouceur.com</p>
+                </div>
+              </div>
             </div>
 
-            <div className="contact-item">
-              <FontAwesomeIcon icon={faPhone} />
-              <h4>Téléphone</h4>
-              <p>(123) 456-7890</p>
-            </div>
-            <div className="contact-item">
-              <FontAwesomeIcon icon={faEnvelope} />
-              <h4>Adresse electronique</h4>
-              <p>contact@mondededouceur.com</p>
+            <div className="social-links">
+              <a
+                href="https://www.facebook.com/yourpage"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FontAwesomeIcon icon={faFacebook} />
+              </a>
+              <a
+                href="https://www.instagram.com/yourpage"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FontAwesomeIcon icon={faInstagram} />
+              </a>
             </div>
           </div>
-  
-          <div className="social-links">
-            
-            <a
-              href="https://www.facebook.com/yourpage"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon icon={faFacebook} />
-            </a>
-            <a
-              href="https://www.instagram.com/yourpage"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon icon={faInstagram} />
-            </a>
-          </div>
-        </div>
+        </section>
       </main>
       <Footer />
     </>

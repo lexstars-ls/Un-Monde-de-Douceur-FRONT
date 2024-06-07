@@ -62,6 +62,7 @@ const GalleryCRUD = () => {
         {
           method: "DELETE",
           headers: {
+            "Content-Type": "application/json",
             Authorization: `Bearer ${storedToken}`, // Inclure le token JWT dans l'en-tête
           },
         }
@@ -131,7 +132,7 @@ const GalleryCRUD = () => {
 
   return (
     <>
-      <HeaderAdmin /> 
+      <HeaderAdmin />
       <div>
         <p>{message}</p> {/* Afficher le message de succès ou d'erreur */}
         <div>
@@ -159,7 +160,9 @@ const GalleryCRUD = () => {
                 <button onClick={() => deleteGallery(gallery.id)}>
                   Supprimer
                 </button>
-                <button onClick={() => handleUpdate(gallery.id)}>Modifier</button>
+                <button onClick={() => handleUpdate(gallery.id)}>
+                  Modifier
+                </button>
               </li>
             ))}
           </ul>

@@ -1,24 +1,32 @@
 @import './variables.scss';
-*{
+
+* {
     margin: 0;
     padding: 0;
-    
+
 }
+
 header {
     nav {
         position: fixed;
-        z-index: 5;
+        z-index: 20;
         background-color: $color1;
-        height: 80px;
+        height: 100px;
         width: 100%;
+
         display: flex;
-        justify-content: center; /* Centrage horizontal */
-        align-items: center; /* Centrage vertical */
+        justify-content: center;
+        /* Centrage horizontal */
+        align-items: center;
+        /* Centrage vertical */
+        transition: height 0.8s; /* Animer les changements de largeur sur 0.8 secondes */
+      
 
         ul {
             display: flex;
             justify-content: space-around;
-            align-items: center; /* Centrage vertical */
+            align-items: center;
+            /* Centrage vertical */
             list-style: none;
             width: 100%;
 
@@ -38,13 +46,16 @@ header {
                     background-color: unset;
                     border: solid $color4 1px;
                     color: $color4;
+                    font-size: 18px;
                 }
+
                 #profilButton {
                     margin-bottom: 3%;
                     @extend .bouton;
                     background-color: unset;
                     border: solid $color4 1px;
                     color: $color4;
+                    font-size: 18px;
                 }
 
                 #disconnectButton {
@@ -53,9 +64,11 @@ header {
                     background-color: $color4;
                     border: solid $color4 2px;
                     color: $color1;
+                    font-size: 18px;
                 }
 
-                #loginButton:hover, #profilButton:hover {
+                #loginButton:hover,
+                #profilButton:hover {
                     @extend .bouton;
                     background-color: $color4;
                     border: solid $color4 2px;
@@ -73,11 +86,17 @@ header {
                     color: $color3;
                     text-decoration: underline;
                 }
-                &:active, &:focus {
-                    
+
+                &:active,
+                &:focus {
+
                     transform: scale(0.9); // Rétrécissement du texte lorsque l'utilisateur click sur ma nav bar
                 }
             }
         }
+    }
+
+    nav:hover {
+        height: 150px;
     }
 }
