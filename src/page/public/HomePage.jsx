@@ -92,17 +92,82 @@ const HomePage = () => {
     return () => clearInterval(interval);
   }, [images.length]); // Exécuté à chaque changement du nombre d'images
 
-  // Effet pour appliquer l'effet de défilement au survol
-  window.addEventListener("scroll", () => {
-    const elements = document.getElementsByClassName("imgContainer");
+  // Effet pour appliquer l'effet de transition après avoir scrollé de 10
+// Effet pour appliquer l'effet de transition après avoir scrollé de 10
+window.addEventListener("scroll", () => {
+  const elements = document.getElementsByClassName("imgContainer");
+  const pElement1 = document.getElementById("paragraphe1");
+  const pElement2 = document.getElementById("paragraphe2");
+  const diaporama = document.getElementById("diaporama");
 
-    Array.from(elements).forEach((element) => {
-      if (window.scrollY > 100) {
-        element.classList.add("hover-effect-on-scroll");
+  // logo et titre
+  Array.from(elements).forEach((element) => {
+    if (window.scrollY > 10) {
+      element.classList.add("hover-effect-on-scroll");
+    } else {
+      element.classList.remove("hover-effect-on-scroll");
+    }
+  });
+
+  // texte 1
+  if (pElement1) {
+    // Vérifiez si l'élément existe avant de le traiter
+    if (window.scrollY > 100) {
+      pElement1.classList.add("hover-effect-paragraphe1");
+    } else {
+      pElement1.classList.remove("hover-effect-paragraphe1");
+    }
+  }
+
+  // texte 2
+  if (pElement2) {
+    if (window.scrollY > 150) {
+      pElement2.classList.add("hover-effect-paragraphe2");
+    } else {
+      pElement2.classList.remove("hover-effect-paragraphe2");
+    }
+  }
+
+  // diaporama
+  if (diaporama) {
+    if (window.scrollY > 200) {
+      diaporama.classList.add("hover-effect-diaporama");
+    } else {
+      diaporama.classList.remove("hover-effect-diaporama");
+    }
+  }
+});
+
+  // test 2
+
+  //TEST
+  window.addEventListener("scroll", () => {
+    const element = document.getElementById("contact-container");
+    // const pElement = document.getElementById("test");
+
+    if (element) {
+      const rect = element.getBoundingClientRect();
+      const windowHeight =
+        window.innerHeight || document.documentElement.clientHeight;
+
+      if (rect.top <= windowHeight && rect.bottom >= 0) {
+        element.classList.add("visible"); // Ajoutez la classe visible
       } else {
-        element.classList.remove("hover-effect-on-scroll");
+        element.classList.remove("visible"); // Retirez la classe visible
       }
-    });
+    }
+
+    // if (pElement) {
+    //   const rect = pElement.getBoundingClientRect();
+    //   const windowHeight =
+    //     window.innerHeight || document.documentElement.clientHeight;
+
+    //   if (rect.top <= windowHeight && rect.bottom >= 0) {
+    //     pElement.classList.add("hover-effect-test"); // Ajoutez la classe visible
+    //   } else {
+    //     pElement.classList.remove("hover-effect-test"); // Retirez la classe visible
+    //   }
+    // }
   });
 
   return (
@@ -114,9 +179,25 @@ const HomePage = () => {
         <section id="logo">
           <div className="imgContainer">
             <h1>Un Monde de Douceur</h1>
+
             <img src={img1} alt="bébé" />
           </div>
-          <div class="background">
+
+          <div id="paragraphe1">
+            <p>
+              Bienvenue sur notre site spécialisé pour le bien-être de bébé, où
+              nous accordons une grande importance à son épanouissement.
+            </p>
+          </div>
+
+          <div id="paragraphe2">
+            <p>
+              Découvrez nos prestations personnalisées, telles que le moment de
+              tendresse offert par notre bain des merveilles.
+            </p>
+          </div>
+
+          <div className="background">
             <span></span>
             <span></span>
             <span></span>
@@ -138,39 +219,41 @@ const HomePage = () => {
             <span></span>
             <span></span>
           </div>
-        </section>
 
-        {/* Section du diaporama */}
+          {/* Section du diaporama */}
 
-        <section id="diaporama">
-          <h2>
-            N'oubliez pas de réserver votre séance avant la fin du dernier mois
-            de grossesse.
-          </h2>
-          <div id="diaporamaContainer">
-            <button onClick={showPrevImage} id="imageBtnPrev">
-              <FontAwesomeIcon icon={faChevronLeft} />
-            </button>
-            {/* Affichage de l'image actuelle du diaporama */}
-            {images.length > 0 ? (
-              <div
-                id="diaporamaImage"
-                style={{
-                  backgroundImage: `url(${images[currentIndex].imageUrl})`,
-                }}
-              />
-            ) : (
-              <p>pas d'image trouvé</p>
-            )}
-            <button onClick={showNextImage} id="imageBtnNext">
-              <FontAwesomeIcon icon={faChevronRight} />
-            </button>
-          </div>
+          <section id="diaporama">
+          
+            <div id="diaporamaContainer">
+              <button onClick={showPrevImage} id="imageBtnPrev">
+                <FontAwesomeIcon icon={faChevronLeft} />
+              </button>
+              {/* Affichage de l'image actuelle du diaporama */}
+              {images.length > 0 ? (
+                <div
+                  id="diaporamaImage"
+                  style={{
+                    backgroundImage: `url(${images[currentIndex].imageUrl})`,
+                  }}
+                />
+              ) : (
+                <p>pas d'image trouvé</p>
+              )}
+              <button onClick={showNextImage} id="imageBtnNext">
+                <FontAwesomeIcon icon={faChevronRight} />
+              </button>
+            </div>
+            <h2>
+              N'oubliez pas de réserver votre séance avant la fin du dernier
+              mois de grossesse.
+            </h2>
+          </section>
+          
         </section>
 
         {/* Section des avis */}
         <section id="container-review">
-          <h2 id="title-review">Derniers commentaires:</h2>
+          <h2 id="title-review">Faites-nous confiance, tout comme eux.</h2>
           <section id="sectionReviews">
             {/* Affichage des avis en fonction de l'état showAllReviews */}
             {showAllReviews

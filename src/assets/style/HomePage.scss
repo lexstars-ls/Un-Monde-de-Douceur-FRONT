@@ -8,6 +8,7 @@
 .home-page-main {
   background-color: $color3;
   text-align: center;
+  overflow: hidden;
 
   h2 {
     font-size: 30px;
@@ -16,20 +17,84 @@
   }
 
   #logo {
-    height: 100vh;
+    height: 200vh;
     position: relative;
     display: flex;
-    align-items: center;
+
     justify-content: center;
     background-color: $color4;
+    overflow: hidden;
+
+    #paragraphe1{
+      z-index: 10;
+      width: 1100px;
+      height: 200px;
+      // background-color: aqua;
+      position: absolute;
+      top: 100%;
+      /* Positionne l'élément en bas du conteneur parent */
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: top 2s ease, color 3s ease, opacity 3s ease;
+      /* Animation de transition pour la propriété top */
+
+      p {
+        opacity: 0;
+      }
+
+      &.hover-effect-paragraphe1 {
+        top: 30%;
+
+        p {
+          opacity: 1;
+          font-size: 50px;
+          color: $color2;
+
+          text-shadow: -1px 0 $color1, 0 1px $color1, 1px 0 $color1, 0 -1px $color1;
+        }
+      }
+    }
+
+    #paragraphe2{
+      z-index: 10;
+      width: 1100px;
+      height: 200px;
+    
+      position: absolute;
+      top: 100%;
+      /* Positionne l'élément en bas du conteneur parent */
+      left: 50%;
+      transform: translate(-50%, -50%);
+     
+      transition: top 2s ease, color 3s ease, opacity 3s ease;
+      /* Animation de transition pour la propriété top */
+    
+      p {
+        opacity: 0;
+        
+      }
+    
+      &.hover-effect-paragraphe2{
+        top: 45%;
+    
+        p {
+          opacity: 1;
+          font-size: 50px;
+          color: $color2;
+        
+          text-shadow: -1px 0 $color1, 0 1px $color1, 1px 0 $color1, 0 -1px $color1;
+        }
+      }
+    }
+    
 
     @keyframes move {
       100% {
-          transform: translate3d(0, 0, 1px) rotate(360deg);
+        transform: translate3d(0, 0, 1px) rotate(360deg);
       }
-  }
-  
-  .background {
+    }
+
+    .background {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -37,9 +102,9 @@
       left: 0;
       z-index: 3;
       overflow: hidden;
-  }
-  
-  .background span {
+    }
+
+    .background span {
       z-index: -1;
       width: 20vmin;
       height: 20vmin;
@@ -50,9 +115,9 @@
       animation-duration: 28s;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
-  }
-  
-  .background span:nth-child(1) {
+    }
+
+    .background span:nth-child(1) {
       color: $color3;
       top: 73%;
       left: 37%;
@@ -60,9 +125,9 @@
       animation-delay: -48s;
       transform-origin: 1vw -19vh;
       box-shadow: -40vmin 0 5.538803824156347vmin currentColor;
-  }
-  
-  .background span:nth-child(2) {
+    }
+
+    .background span:nth-child(2) {
       color: $color4;
       top: 96%;
       left: 44%;
@@ -70,9 +135,9 @@
       animation-delay: -3s;
       transform-origin: 14vw -15vh;
       box-shadow: -40vmin 0 5.091113327847769vmin currentColor;
-  }
-  
-  .background span:nth-child(3) {
+    }
+
+    .background span:nth-child(3) {
       color: $color2;
       top: 54%;
       left: 25%;
@@ -80,9 +145,9 @@
       animation-delay: -8s;
       transform-origin: 3vw 13vh;
       box-shadow: -40vmin 0 5.608611204103166vmin currentColor;
-  }
-  
-  .background span:nth-child(4) {
+    }
+
+    .background span:nth-child(4) {
       color: $color3;
       top: 17%;
       left: 32%;
@@ -90,9 +155,9 @@
       animation-delay: -41s;
       transform-origin: -17vw -6vh;
       box-shadow: -40vmin 0 5.298761512333877vmin currentColor;
-  }
-  
-  .background span:nth-child(5) {
+    }
+
+    .background span:nth-child(5) {
       color: $color4;
       top: 41%;
       left: 25%;
@@ -100,9 +165,9 @@
       animation-delay: -13s;
       transform-origin: 19vw 10vh;
       box-shadow: -40vmin 0 5.70937441069756vmin currentColor;
-  }
-  
-  .background span:nth-child(6) {
+    }
+
+    .background span:nth-child(6) {
       color: $color2;
       top: 71%;
       left: 85%;
@@ -110,9 +175,9 @@
       animation-delay: -47s;
       transform-origin: 11vw 24vh;
       box-shadow: 40vmin 0 5.932255939508974vmin currentColor;
-  }
-  
-  .background span:nth-child(7) {
+    }
+
+    .background span:nth-child(7) {
       color: $color3;
       top: 35%;
       left: 33%;
@@ -120,9 +185,9 @@
       animation-delay: -16s;
       transform-origin: -7vw 9vh;
       box-shadow: -40vmin 0 5.3050785942076395vmin currentColor;
-  }
-  
-  .background span:nth-child(8) {
+    }
+
+    .background span:nth-child(8) {
       color: $color4;
       top: 94%;
       left: 48%;
@@ -130,9 +195,9 @@
       animation-delay: -45s;
       transform-origin: 2vw 18vh;
       box-shadow: -40vmin 0 5.102632200009182vmin currentColor;
-  }
-  
-  .background span:nth-child(9) {
+    }
+
+    .background span:nth-child(9) {
       color: $color2;
       top: 28%;
       left: 97%;
@@ -140,9 +205,9 @@
       animation-delay: -6s;
       transform-origin: -23vw -11vh;
       box-shadow: 40vmin 0 5.095896048741611vmin currentColor;
-  }
-  
-  .background span:nth-child(10) {
+    }
+
+    .background span:nth-child(10) {
       color: $color3;
       top: 31%;
       left: 43%;
@@ -150,9 +215,9 @@
       animation-delay: -26s;
       transform-origin: 17vw 16vh;
       box-shadow: 40vmin 0 5.786795476456273vmin currentColor;
-  }
-  
-  .background span:nth-child(11) {
+    }
+
+    .background span:nth-child(11) {
       color: $color4;
       top: 95%;
       left: 2%;
@@ -160,9 +225,9 @@
       animation-delay: -13s;
       transform-origin: 6vw -5vh;
       box-shadow: 40vmin 0 5.267508237928913vmin currentColor;
-  }
-  
-  .background span:nth-child(12) {
+    }
+
+    .background span:nth-child(12) {
       color: $color2;
       top: 5%;
       left: 9%;
@@ -170,9 +235,9 @@
       animation-delay: -15s;
       transform-origin: 5vw 15vh;
       box-shadow: -40vmin 0 5.345938327850945vmin currentColor;
-  }
-  
-  .background span:nth-child(13) {
+    }
+
+    .background span:nth-child(13) {
       color: $color3;
       top: 40%;
       left: 17%;
@@ -180,9 +245,9 @@
       animation-delay: -14s;
       transform-origin: -12vw -10vh;
       box-shadow: -40vmin 0 5.199768934375181vmin currentColor;
-  }
-  
-  .background span:nth-child(14) {
+    }
+
+    .background span:nth-child(14) {
       color: $color4;
       top: 42%;
       left: 36%;
@@ -190,9 +255,9 @@
       animation-delay: -11s;
       transform-origin: -1vw 9vh;
       box-shadow: 40vmin 0 5.958626289986047vmin currentColor;
-  }
-  
-  .background span:nth-child(15) {
+    }
+
+    .background span:nth-child(15) {
       color: $color2;
       top: 34%;
       left: 60%;
@@ -200,9 +265,9 @@
       animation-delay: -5s;
       transform-origin: -7vw 13vh;
       box-shadow: 40vmin 0 5.4010602838366175vmin currentColor;
-  }
-  
-  .background span:nth-child(16) {
+    }
+
+    .background span:nth-child(16) {
       color: $color3;
       top: 94%;
       left: 16%;
@@ -210,9 +275,9 @@
       animation-delay: -40s;
       transform-origin: -9vw 25vh;
       box-shadow: -40vmin 0 5.092687923192798vmin currentColor;
-  }
-  
-  .background span:nth-child(17) {
+    }
+
+    .background span:nth-child(17) {
       color: $color4;
       top: 81%;
       left: 68%;
@@ -220,9 +285,9 @@
       animation-delay: -20s;
       transform-origin: 0vw 10vh;
       box-shadow: 40vmin 0 5.3781336156695065vmin currentColor;
-  }
-  
-  .background span:nth-child(18) {
+    }
+
+    .background span:nth-child(18) {
       color: $color2;
       top: 92%;
       left: 85%;
@@ -230,9 +295,9 @@
       animation-delay: -35s;
       transform-origin: 6vw -17vh;
       box-shadow: -40vmin 0 5.990089214654931vmin currentColor;
-  }
-  
-  .background span:nth-child(19) {
+    }
+
+    .background span:nth-child(19) {
       color: $color3;
       top: 80%;
       left: 81%;
@@ -240,9 +305,9 @@
       animation-delay: -5s;
       transform-origin: 0vw 4vh;
       box-shadow: 40vmin 0 5.246021725664003vmin currentColor;
-  }
-  
-  .background span:nth-child(20) {
+    }
+
+    .background span:nth-child(20) {
       color: $color4;
       top: 78%;
       left: 69%;
@@ -250,15 +315,23 @@
       animation-delay: -2s;
       transform-origin: -4vw 18vh;
       box-shadow: 40vmin 0 5.7901729918380465vmin currentColor;
-  }
-  
+    }
+
 
     .imgContainer {
-      width: 900px;
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1200px;
+      height: 600px;
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 10;
+      opacity: 1;
+      transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+
 
       h1 {
         font-size: 110px;
@@ -268,81 +341,82 @@
         font-family: 'Macondo', cursive;
         text-shadow: -1px 0 $color1, 0 1px $color1, 1px 0 $color1, 0 -1px $color1;
         z-index: 2;
-
       }
 
       img {
         width: 400px;
-        transition: width 100ms linear, display;
         z-index: 1;
       }
     }
 
     .hover-effect-on-scroll {
+      opacity: 0;
 
-      h1 {
-        opacity: 1;
-        color: $color3;
-        z-index: 1;
-      }
+      transform: translateY(-100%) translateX(-50%);
+      /* Déplace l'élément vers le haut de sa hauteur tout en maintenant sa position horizontale */
 
-      img {
-        width: 25%;
-        z-index: 2;
-      }
     }
   }
 
   #diaporama {
     height: 60vh;
-
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-
+    position: absolute;
+    top: 100%; /* Positionne l'élément en bas du conteneur parent */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: top 3s ease; /* Ajout d'une transition pour un effet fluide */
+    z-index: 10;
+  
+    &.hover-effect-diaporama {
+      top: 65%;
+      
+    }
+  
     h2 {
       color: $color2;
       text-decoration: none;
     }
-
+  
     #diaporamaContainer {
       position: relative;
       width: 600px;
       height: 400px;
       overflow: hidden;
-
+  
       button {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         @extend .bouton;
         transition: background-color 0.3s ease;
-
+  
         &:hover {
           background-color: $color5;
           color: $color2;
         }
       }
-
+  
       #imageBtnPrev {
         left: 20px;
       }
-
+  
       #imageBtnNext {
         right: 20px;
       }
-
+  
       #diaporamaImage {
-
         height: 100%;
-
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
       }
     }
   }
+  
 
 
   #container-review {
@@ -370,6 +444,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+
+        padding: 20px;
+        border-radius: 10px;
+
 
 
         section {
@@ -405,15 +484,20 @@
 
     #button-review:hover {
       background-color: $color1;
-      
+
       scale: 1.2;
       color: $color2;
     }
   }
 
   #contact-container {
-
-    height: 60vh;
+   
+height: 50vh;
+    opacity: 0;
+    /* Commencez avec une opacité de 0 */
+    transform: translateY(100%);
+    /* Déplacez l'élément vers le bas de 50px */
+    transition: opacity 1s ease, transform 1s ease, height 0.1s ease-in;
 
     h2 {
       margin-bottom: 50px;
@@ -443,20 +527,20 @@
 
           font-size: 18px;
           color: $color2;
-         
+
           h4 {
             padding-bottom: 25px;
             color: $color1;
           }
 
           h4,
-          p{
+          p {
             transition: scale 0.8s;
           }
 
           h4:hover,
           p:hover {
-             scale: 1.2;
+            scale: 1.2;
           }
 
           div {
@@ -470,7 +554,8 @@
             padding-bottom: 20px;
             transition: scale 0.8s;
           }
-          svg:hover{
+
+          svg:hover {
             scale: 1.5;
           }
 
@@ -498,10 +583,19 @@
           color: $color2;
           transition: scale 0.8s;
         }
-        svg:hover{
+
+        svg:hover {
           scale: 1.5;
         }
       }
     }
+  }
+
+  #contact-container.visible {
+    opacity: 1;
+    /* Augmentez l'opacité à 1 */
+    transform: translateY(0);
+    /* Remettez l'élément à sa position d'origine */
+    height: 60vh;
   }
 }

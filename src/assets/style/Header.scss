@@ -1,11 +1,5 @@
 @import './variables.scss';
 
-* {
-    margin: 0;
-    padding: 0;
-
-}
-
 header {
     nav {
         position: fixed;
@@ -13,20 +7,20 @@ header {
         background-color: $color1;
         height: 100px;
         width: 100%;
-
         display: flex;
         justify-content: center;
-        /* Centrage horizontal */
         align-items: center;
-        /* Centrage vertical */
-        transition: height 0.8s; /* Animer les changements de largeur sur 0.8 secondes */
-      
+        transition: height 0.8s;
+
+        .menu-toggle {
+
+            display: none;
+        }
 
         ul {
             display: flex;
             justify-content: space-around;
             align-items: center;
-            /* Centrage vertical */
             list-style: none;
             width: 100%;
 
@@ -40,16 +34,9 @@ header {
                     transition: all 0.3s;
                 }
 
-                #loginButton {
-                    margin-bottom: 3%;
-                    @extend .bouton;
-                    background-color: unset;
-                    border: solid $color4 1px;
-                    color: $color4;
-                    font-size: 18px;
-                }
-
-                #profilButton {
+                #loginButton,
+                #profilButton,
+                #disconnectButton {
                     margin-bottom: 3%;
                     @extend .bouton;
                     background-color: unset;
@@ -59,27 +46,30 @@ header {
                 }
 
                 #disconnectButton {
-                    margin-bottom: 3%;
-                    @extend .bouton;
-                    background-color: $color4;
                     border: solid $color4 2px;
                     color: $color1;
-                    font-size: 18px;
+                    background-color: $color4;
                 }
 
                 #loginButton:hover,
                 #profilButton:hover {
-                    @extend .bouton;
                     background-color: $color4;
                     border: solid $color4 2px;
                     color: $color1;
                 }
 
                 #disconnectButton:hover {
-                    @extend .bouton;
                     background-color: unset;
                     border: solid $color4 1px;
                     color: $color4;
+                }
+
+                button {
+                    transition: all 0.3s;
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
                 }
 
                 a:hover {
@@ -89,13 +79,101 @@ header {
 
                 &:active,
                 &:focus {
-
-                    transform: scale(0.9); // Rétrécissement du texte lorsque l'utilisateur click sur ma nav bar
+                    transform: scale(0.9);
                 }
             }
         }
+
+        // Media queries pour les tablettes
+        @media screen and (max-width: 768px) {
+            ul li {
+                font-size: 20px;
+            }
+        }
+
+        // Media queries pour les mobiles
+        @media screen and (max-width: 480px) {
+            height: 100px;
+            
+
+
+
+            &.menu-close {
+                transition: height 3s ease ;
+                position: relative;
+                .menu-toggle {
+                    position: absolute;
+                    left: 10%;
+                    display: block;
+                   
+                    
+                    background: none;
+                    border: none;
+                    svg{
+                        height: 30px;
+                    }
+                }
+
+                ul {
+                    display: none;
+                }
+            }
+
+            // Style des boutons sur mobile
+            &.menu-open {
+               padding: 50px;
+                position: relative;
+
+                .menu-toggle {
+                    position: absolute;
+                    top: 50%;
+                    left: 10%;
+                    display: block;
+                    background: none;
+                    border: none;
+                    width: 50px;
+                }
+
+                ul {
+                   
+                    
+                    height: auto;
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+
+                    li {
+                        a {
+                            font-size: 18px;
+                           
+
+                        }
+
+                        #loginButton {
+                            padding: 5px 10px;
+                            border-radius: 200px;
+                            font-size: 10px;
+                        }
+
+                        #profilButton {
+                            padding: 5px 10px;
+                            border-radius: 200px;
+                            font-size: 10px;
+                        }
+
+                        #disconnectButton {
+                            padding: 5px 10px;
+                            border-radius: 200px;
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
+    // Sélecteur de hover pour la navigation
     nav:hover {
         height: 150px;
     }

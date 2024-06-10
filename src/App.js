@@ -5,6 +5,7 @@ import LoginPage from "./page/public/LoginPage";
 import HomePage from "./page/public/HomePage";
 import UserPage from "./page/public/UserPage";
 
+import ParcourPage from "./page/public/ParcourPage";
 import PrestationPage from "./page/public/PrestationPage";
 import TarifPage from "./page/public/TarifPage";
 import CreateUserPage from "./page/public/CreateUserPage";
@@ -29,6 +30,7 @@ function App() {
         <Route path="/profilPage" element={<UserPage />} />
         <Route path="/prestations" element={<PrestationPage />} />
         <Route path="/tarifs" element={<TarifPage />} />
+        <Route path="/parcours" element={<ParcourPage />} />
         
        
 

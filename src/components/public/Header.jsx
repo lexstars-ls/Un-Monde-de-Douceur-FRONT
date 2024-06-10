@@ -2,17 +2,16 @@ import React, { useState, useEffect } from "react";
 import "../../assets/style/Header.scss";
 import { useNavigate } from "react-router-dom";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faXmark} from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   const navigate = useNavigate();
-
   const token = localStorage.getItem("jwt");
-  
 
   // Utiliser useState pour initialiser l'état de connexion en fonction de la présence d'un token dans le localStorage
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    token !== null
-  );
+  const [isLoggedIn, setIsLoggedIn] = useState(token !== null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // État pour contrôler l'affichage du menu
 
   // Utiliser useEffect pour vérifier si le token est toujours présent dans le localStorage
   useEffect(() => {
@@ -23,7 +22,6 @@ const Header = () => {
 
     // Vérifier le token à chaque changement du localStorage
     checkToken();
-
   }, [token]); // Exécuter cet effet à chaque changement du localStorage
 
   const handleLogout = () => {
@@ -32,9 +30,17 @@ const Header = () => {
     navigate("/"); // Rediriger vers la page d'accueil
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen); // Inverser l'état de l'affichage du menu
+  };
+
   return (
     <header id="headerUser">
-      <nav>
+      <nav className={isMenuOpen ? "menu-open" : "menu-close"}>
+      <button className="menu-toggle" onClick={toggleMenu}>
+          {/* Utiliser une icône pour le bouton de menu */}
+          {isMenuOpen ?  <FontAwesomeIcon icon={faXmark} />: <FontAwesomeIcon icon={faBars} />}
+        </button>
         <ul>
           <li>
             <a href="/">Accueil</a>
@@ -51,7 +57,6 @@ const Header = () => {
           <li>
             <a href="/tarifs">Tarifs</a>
           </li>
-
           {/* affichage des Boutons votre profil et décon après vérification de l'identification de mon utilisateur */}
           {isLoggedIn ? (
             <>
