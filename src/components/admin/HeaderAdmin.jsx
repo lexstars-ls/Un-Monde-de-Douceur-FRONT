@@ -30,7 +30,11 @@ const HeaderAdmin = () => {
             <Link to="/admin/Image">Gérer les images</Link>
           </li>
           <li>
-            <Link to="/admin/">Gérer les Article</Link>
+            <Link to="/admin/Article">Gérer les Articles</Link>
+          </li>
+
+          <li>
+            <Link to="/admin/Tarif">Gérer les Tarifs</Link>
           </li>
           
         </ul>

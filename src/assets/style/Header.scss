@@ -15,6 +15,10 @@ header {
         .menu-toggle {
 
             display: none;
+
+            svg {
+                color: $color3;
+            }
         }
 
         ul {
@@ -84,83 +88,105 @@ header {
             }
         }
 
-        // Media queries pour les tablettes
-        @media screen and (max-width: 768px) {
-            ul li {
+        &:hover {
+            height: 150px;
+        }
+
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // Media queries pour les tablettes
+    @media screen and (max-width: 768px) {
+        nav {
+            ul li a {
                 font-size: 20px;
             }
         }
 
-        // Media queries pour les mobiles
-        @media screen and (max-width: 480px) {
-            height: 100px;
-            
+    }
 
-
-
+    // Media queries pour les mobiles
+    @media screen and (max-width: 480px) {
+        nav {
             &.menu-close {
-                transition: height 3s ease ;
-                position: relative;
+                height: 90px;
+
                 .menu-toggle {
                     position: absolute;
                     left: 10%;
                     display: block;
-                   
-                    
                     background: none;
                     border: none;
-                    svg{
+
+                    svg {
                         height: 30px;
                     }
                 }
 
+                .menu-toggle:hover {
+                    transform: scale(1.2);
+                }
+
                 ul {
-                    display: none;
+                    max-height: 0;
+                    opacity: 0;
                 }
             }
 
             // Style des boutons sur mobile
             &.menu-open {
-               padding: 50px;
-                position: relative;
+                height: 250px;
 
                 .menu-toggle {
                     position: absolute;
-                    top: 50%;
-                    left: 10%;
+                    top: 10%;
+                    left: 3%;
                     display: block;
                     background: none;
                     border: none;
                     width: 50px;
+
+                    svg {
+                        height: 30px;
+                    }
+                }
+
+                .menu-toggle:hover {
+                    transform: scale(1.2);
                 }
 
                 ul {
-                   
-                    
                     height: auto;
+                    max-height: 200px;
+                    opacity: 1;
+
+                    li {
+                        height: 30px;
+                    }
+                }
+            }
+
+            & {
+                ul {
                     display: flex;
                     flex-direction: column;
                     text-align: center;
+                    max-height: 0;
+                    opacity: 0;
+                    overflow: hidden;
+                    transition: max-height 2s ease-out, opacity 0.5s ease-out;
 
                     li {
+                        display: flex;
+                        align-items: center;
+
                         a {
                             font-size: 18px;
-                           
-
                         }
 
-                        #loginButton {
-                            padding: 5px 10px;
-                            border-radius: 200px;
-                            font-size: 10px;
-                        }
-
-                        #profilButton {
-                            padding: 5px 10px;
-                            border-radius: 200px;
-                            font-size: 10px;
-                        }
-
+                        #loginButton,
+                        #profilButton,
                         #disconnectButton {
                             padding: 5px 10px;
                             border-radius: 200px;
@@ -170,11 +196,5 @@ header {
                 }
             }
         }
-
-    }
-
-    // Sélecteur de hover pour la navigation
-    nav:hover {
-        height: 150px;
     }
 }

@@ -35,3 +35,41 @@ footer {
     }
   }
 }
+
+/* Media queries pour tablette */
+@media (max-width: 768px) {
+  footer {
+    padding: 15px; 
+
+    h4 {
+      font-size: 18px;
+    }
+
+    .social-links {
+      gap: 8px;
+
+      a {
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+/* Media queries pour mobile */
+@media (max-width: 480px) {
+  footer {
+    padding: 10px;
+
+    h4 {
+      font-size: 16px;
+    }
+
+    .social-links {
+     
+
+      a {
+        font-size: 20px;
+      }
+    }
+  }
+}

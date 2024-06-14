@@ -1,11 +1,8 @@
-import { useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import "../../assets/style/Footer.scss";
 
 const Footer = () => {
-
-
   return (
     <footer>
       <section id="container-footer">

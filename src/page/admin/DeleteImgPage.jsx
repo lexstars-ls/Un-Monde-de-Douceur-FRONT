@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import{ useState, useEffect } from "react";
 
 const DeleteImgPage = () => {
   // États pour gérer les images, les galeries, la galerie sélectionnée, les messages d'erreur et le token JWT
@@ -105,8 +105,7 @@ const DeleteImgPage = () => {
 
   return (
     <div>
-      <h1>Galerie d'Images</h1>
-
+     
       {/* Section pour afficher les galeries disponibles */}
       <div>
         <h2>Galeries Disponibles</h2>

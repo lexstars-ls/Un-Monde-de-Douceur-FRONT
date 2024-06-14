@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import HeaderAdmin from "../../components/admin/HeaderAdmin";
+import "../../assets/style/AdminGallery.scss";
 
 const GalleryCRUD = () => {
+  // useState pour l'upload
   const [galleries, setGalleries] = useState([]); // État pour stocker les galeries
-  const [name, setName] = useState(""); // État pour stocker le nom de la galerie
-  const [year, setYear] = useState(""); // État pour stocker l'année de la galerie
+  const [name, setName] = useState(""); // État pour stocker le nom de la galerie à créer
+  const [year, setYear] = useState(""); // État pour stocker l'année de la galerie à créer
+
+  const [selectedName, setSelectedName] = useState(""); // État pour stocker le nom de la galerie à mettre à jour
+  const [selectedYear, setSelectedYear] = useState(""); // État pour stocker l'année de la galerie à mettre à jour
   const [message, setMessage] = useState(null); // État pour stocker les messages (succès ou erreur)
   const [selectedGalleryId, setSelectedGalleryId] = useState(null); // État pour stocker l'ID de la galerie sélectionnée pour modification
-
-  // useEffect pour récupérer les galeries lors du premier rendu du composant
-  useEffect(() => {
-    fetchGalleries(); // Appeler la fonction pour récupérer les galeries
-  }, []);
 
   // Fonction pour récupérer les galeries depuis l'API
   const fetchGalleries = async () => {
@@ -27,6 +27,11 @@ const GalleryCRUD = () => {
       setMessage(error.message); // Mettre à jour l'état des messages en cas d'erreur
     }
   };
+
+  // useEffect pour récupérer les galeries lors du premier rendu du composant
+  useEffect(() => {
+    fetchGalleries(); // Appeler la fonction pour récupérer les galeries
+  }, []);
 
   // Fonction pour créer une nouvelle galerie
   const createGallery = async () => {
@@ -85,8 +90,8 @@ const GalleryCRUD = () => {
       (gallery) => gallery.id === galleryId
     );
     if (selectedGallery) {
-      setName(selectedGallery.name); // Mettre à jour le champ du nom avec le nom de la galerie sélectionnée
-      setYear(selectedGallery.year); // Mettre à jour le champ de l'année avec l'année de la galerie sélectionnée
+      setSelectedName(selectedGallery.name); // Mettre à jour le champ du nom avec le nom de la galerie sélectionnée
+      setSelectedYear(selectedGallery.year); // Mettre à jour le champ de l'année avec l'année de la galerie sélectionnée
     }
   };
 
@@ -102,22 +107,32 @@ const GalleryCRUD = () => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${storedToken}`, // Inclure le token JWT dans l'en-tête
           },
-          body: JSON.stringify({ name, year }), // Envoyer les données mises à jour de la galerie
+          // Récupération à l'aide d'un autre useState afin de ne pas afficher les données de création dans les champs d'entrée."
+          body: JSON.stringify({ name: selectedName, year: selectedYear }), 
         }
       );
       if (response.ok) {
-        setMessage("Galerie mise à niveau avec succès");
-        setName(""); // Réinitialiser le champ du nom
-        setYear(""); // Réinitialiser le champ de l'année
+        setMessage("Galerie mise à jour avec succès");
+        setSelectedName(""); // Réinitialiser le champ du nom
+        setSelectedYear(""); // Réinitialiser le champ de l'année
         setSelectedGalleryId(null); // Réinitialiser l'ID de la galerie sélectionnée
         fetchGalleries(); // Récupérer à nouveau les galeries pour mettre à jour la liste
       } else {
-        throw new Error("Erreur lors de la mise à niveau de la galerie");
+        throw new Error("Erreur lors de la mise à jour de la galerie");
       }
     } catch (error) {
       setMessage(error.message); // Mettre à jour l'état des messages en cas d'erreur
     }
   };
+
+  // useEffect pour réinitialiser selectedGalleryId si la galerie a été supprimée
+  useEffect(() => {
+    if (!galleries.some((gallery) => gallery.id === selectedGalleryId)) {
+      setSelectedGalleryId(null);
+      setSelectedName("");
+      setSelectedYear("");
+    }
+  }, [galleries, selectedGalleryId]);
 
   // useEffect pour faire disparaître le message après un délai
   useEffect(() => {
@@ -133,43 +148,11 @@ const GalleryCRUD = () => {
   return (
     <>
       <HeaderAdmin />
-      <div>
-        <p>{message}</p> {/* Afficher le message de succès ou d'erreur */}
+      <main id="admin-gallery-main">
         <div>
-          <h2>Créer une nouvelle galerie</h2>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Nom de la galerie"
-          />
-          <input
-            type="number"
-            value={year}
-            onChange={(e) => setYear(e.target.value)}
-            placeholder="Année"
-          />
-          <button onClick={createGallery}>Créer</button>
-        </div>
-        <div>
-          <h2>Liste des galeries</h2>
-          <ul>
-            {galleries.map((gallery) => (
-              <li key={gallery.id}>
-                {gallery.name} ({gallery.year})
-                <button onClick={() => deleteGallery(gallery.id)}>
-                  Supprimer
-                </button>
-                <button onClick={() => handleUpdate(gallery.id)}>
-                  Modifier
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-        {selectedGalleryId && (
+          <p>{message}</p> {/* Afficher le message de succès ou d'erreur */}
           <div>
-            <h2>Modifier la galerie</h2>
+            <h2>Créer une nouvelle galerie</h2>
             <input
               type="text"
               value={name}
@@ -182,10 +165,44 @@ const GalleryCRUD = () => {
               onChange={(e) => setYear(e.target.value)}
               placeholder="Année"
             />
-            <button onClick={upgradeGallery}>Mettre à jour</button>
+            <button onClick={createGallery}>Créer</button>
           </div>
-        )}
-      </div>
+          <div>
+            <h2>Liste des galeries</h2>
+            <ul>
+              {galleries.map((gallery) => (
+                <li key={gallery.id}>
+                  {gallery.name} ({gallery.year})
+                  <button onClick={() => deleteGallery(gallery.id)}>
+                    Supprimer
+                  </button>
+                  <button onClick={() => handleUpdate(gallery.id)}>
+                    Modifier
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+          {selectedGalleryId && (
+            <div>
+              <h2>Modifier la galerie</h2>
+              <input
+                type="text"
+                value={selectedName}
+                onChange={(e) => setSelectedName(e.target.value)}
+                placeholder="Nom de la galerie"
+              />
+              <input
+                type="number"
+                value={selectedYear}
+                onChange={(e) => setSelectedYear(e.target.value)}
+                placeholder="Année"
+              />
+              <button onClick={upgradeGallery}>Mettre à jour</button>
+            </div>
+          )}
+        </div>
+      </main>
     </>
   );
 };

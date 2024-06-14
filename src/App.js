@@ -15,8 +15,8 @@ import GaleriePage from "./page/public/GaleriePage";
 import DashboardPage from "./page/admin/DashboardPage";
 import GalleryCrudPage from "./page/admin/GalleryPage";
 import AdminImagePage from "./page/admin/AdminImagePage";
-
-
+import AdminArticlePage from "./page/admin/AdminArticlePage";
+import AdminReviewPage from "./page/admin/AdminReviewPage";
 
 function App() {
   return (
@@ -43,7 +43,8 @@ function App() {
         <Route path="/admin" element={<DashboardPage />} />
         <Route path="/admin/Galerie" element={<GalleryCrudPage />} />
         <Route path="/admin/Image" element={<AdminImagePage />} />
-
+        <Route path="/admin/Review" element={<AdminReviewPage />} />
+        <Route path="/admin/Article" element={<AdminArticlePage />} />
       </Routes>
     </Router>
   );

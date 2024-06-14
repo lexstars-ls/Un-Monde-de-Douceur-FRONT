@@ -196,7 +196,7 @@ window.addEventListener("scroll", () => {
               tendresse offert par notre bain des merveilles.
             </p>
           </div>
-
+{/* span et div pour l'aniamtion de mon background */}
           <div className="background">
             <span></span>
             <span></span>

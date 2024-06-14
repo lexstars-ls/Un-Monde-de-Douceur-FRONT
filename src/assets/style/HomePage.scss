@@ -20,23 +20,20 @@
     height: 200vh;
     position: relative;
     display: flex;
-
     justify-content: center;
     background-color: $color4;
     overflow: hidden;
 
-    #paragraphe1{
+    #paragraphe1 {
       z-index: 10;
       width: 1100px;
       height: 200px;
-      // background-color: aqua;
       position: absolute;
       top: 100%;
-      /* Positionne l'élément en bas du conteneur parent */
+
       left: 50%;
       transform: translate(-50%, -50%);
       transition: top 2s ease, color 3s ease, opacity 3s ease;
-      /* Animation de transition pour la propriété top */
 
       p {
         opacity: 0;
@@ -55,38 +52,38 @@
       }
     }
 
-    #paragraphe2{
+    #paragraphe2 {
       z-index: 10;
       width: 1100px;
       height: 200px;
-    
+
       position: absolute;
       top: 100%;
       /* Positionne l'élément en bas du conteneur parent */
       left: 50%;
       transform: translate(-50%, -50%);
-     
+
       transition: top 2s ease, color 3s ease, opacity 3s ease;
       /* Animation de transition pour la propriété top */
-    
+
       p {
         opacity: 0;
-        
+
       }
-    
-      &.hover-effect-paragraphe2{
+
+      &.hover-effect-paragraphe2 {
         top: 45%;
-    
+
         p {
           opacity: 1;
           font-size: 50px;
           color: $color2;
-        
+
           text-shadow: -1px 0 $color1, 0 1px $color1, 1px 0 $color1, 0 -1px $color1;
         }
       }
     }
-    
+
 
     @keyframes move {
       100% {
@@ -351,7 +348,6 @@
 
     .hover-effect-on-scroll {
       opacity: 0;
-
       transform: translateY(-100%) translateX(-50%);
       /* Déplace l'élément vers le haut de sa hauteur tout en maintenant sa position horizontale */
 
@@ -365,49 +361,53 @@
     justify-content: space-around;
     align-items: center;
     position: absolute;
-    top: 100%; /* Positionne l'élément en bas du conteneur parent */
+    top: 150%;
+
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: top 3s ease; /* Ajout d'une transition pour un effet fluide */
+    opacity: 0;
+    transition: top 3s ease, opacity 3s ease;
+
     z-index: 10;
-  
+
     &.hover-effect-diaporama {
       top: 65%;
-      
+      opacity: 1;
+
     }
-  
+
     h2 {
       color: $color2;
       text-decoration: none;
     }
-  
+
     #diaporamaContainer {
       position: relative;
       width: 600px;
       height: 400px;
       overflow: hidden;
-  
+
       button {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         @extend .bouton;
         transition: background-color 0.3s ease;
-  
+
         &:hover {
           background-color: $color5;
           color: $color2;
         }
       }
-  
+
       #imageBtnPrev {
         left: 20px;
       }
-  
+
       #imageBtnNext {
         right: 20px;
       }
-  
+
       #diaporamaImage {
         height: 100%;
         background-size: cover;
@@ -416,7 +416,7 @@
       }
     }
   }
-  
+
 
 
   #container-review {
@@ -491,8 +491,8 @@
   }
 
   #contact-container {
-   
-height: 50vh;
+
+    height: 50vh;
     opacity: 0;
     /* Commencez avec une opacité de 0 */
     transform: translateY(100%);
@@ -597,5 +597,294 @@ height: 50vh;
     transform: translateY(0);
     /* Remettez l'élément à sa position d'origine */
     height: 60vh;
+  }
+}
+
+// Media queries pour les tablettes
+@media screen and (max-width: 768px) {
+  .home-page-main {
+    h2 {
+      font-size: 25px;
+    }
+
+    #logo {
+      height: 150vh;
+
+      #paragraphe1,
+      #paragraphe2 {
+        width: 90%;
+
+        p {
+          font-size: 30px;
+        }
+      }
+
+      .imgContainer {
+        width: 90%;
+        height: 300px;
+
+        h1 {
+          font-size: 70px;
+        }
+
+        img {
+          width: 200px;
+        }
+      }
+    }
+
+    #diaporama {
+      height: 50vh;
+
+      #diaporamaContainer {
+        width: 90%;
+        height: 300px;
+      }
+    }
+
+    #container-review {
+      margin-top: 50px;
+      margin-bottom: 50px;
+
+      #sectionReviews {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+      }
+    }
+
+    #contact-container {
+      height: 40vh;
+    }
+  }
+}
+
+// Media queries pour les mobiles
+@media screen and (max-width: 480px) {
+  .home-page-main {
+    h2 {
+      font-size: 20px;
+    }
+
+    #logo {
+
+      height: 200vh;
+
+      #paragraphe1,
+      #paragraphe2 {
+
+        width: 80%;
+        height: 200px;
+
+        transition: top 2s ease, color 3s ease, opacity 3s ease;
+
+        p {
+          opacity: 0;
+        }
+
+        &.hover-effect-paragraphe1 {
+          top: 40%;
+
+          p {
+            opacity: 1;
+            font-size: 20px;
+
+          }
+        }
+
+        &.hover-effect-paragraphe2 {
+          top: 50%;
+
+          p {
+            opacity: 1;
+            font-size: 20px;
+
+          }
+        }
+      }
+
+      .imgContainer {
+        top: 25%;
+        width: 100%;
+        height: 200px;
+
+        h1 {
+          font-size: 30px;
+        }
+
+        img {
+          width: 150px;
+        }
+      }
+
+
+    }
+
+    #diaporama {
+      height: 40vh;
+      width: 80%;
+
+
+
+      #diaporamaContainer {
+        width: 80%;
+        height: 200px;
+
+        button {
+          padding: 2px 1px;
+          background-color: none;
+
+          svg {
+            height: 20px;
+          }
+
+        }
+
+        #imageBtnPrev {
+          left: 5px;
+        }
+
+        #imageBtnNext {
+          right: 5px;
+        }
+      }
+
+    }
+
+    #container-review {
+
+
+
+      #sectionReviews {
+
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        width: 100%;
+
+        .reviewArticle {
+          section {
+            min-width: 200px;
+            text-align: center;
+          }
+        }
+      }
+
+      button {
+        font-size: 14px;
+
+      }
+    }
+
+    #contact-container {
+
+      height: 500px;
+      opacity: 0;
+      /* Commencez avec une opacité de 0 */
+      transform: translateY(40%);
+      /* Déplacez l'élément vers le bas de 50px */
+      transition: opacity 1s ease, transform 1s ease, height 0.1s ease-in;
+
+      h2 {
+        margin-bottom: 50px;
+      }
+
+      .contact-page {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+
+        .contact-details {
+          height: auto;
+          display: flex;
+          flex-direction: column;
+
+
+
+          .contact-item {
+            margin-top: 50px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 300px;
+
+            font-size: 18px;
+            color: $color2;
+
+            h4 {
+              padding-bottom: 25px;
+              color: $color1;
+            }
+
+            h4,
+            p {
+              transition: scale 0.8s;
+            }
+
+            h4:hover,
+            p:hover {
+              scale: 1.2;
+            }
+
+            div {
+              margin-top: 50px;
+            }
+
+            svg {
+              top: 100%;
+              font-size: 50px;
+              color: $color2;
+              padding-bottom: 20px;
+              transition: scale 0.8s;
+            }
+
+            svg:hover {
+              scale: 1.5;
+            }
+
+          }
+
+          .contact-item:nth-of-type(2) {
+            padding-left: 0;
+            padding-right: 0;
+            border-left: solid 0;
+            border-right: solid 0;
+            margin-bottom: 50px;
+          }
+        }
+
+        .social-links {
+          margin-top: 70px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          svg {
+            font-size: 50px;
+            padding-left: 50px;
+            padding-right: 50px;
+            color: $color2;
+            transition: scale 0.8s;
+            padding-bottom: 30px;
+          }
+
+          svg:hover {
+            scale: 1.5;
+          }
+        }
+      }
+    }
+
+    #contact-container.visible {
+      opacity: 1;
+      /* Augmentez l'opacité à 1 */
+      transform: translateY(0);
+      /* Remettez l'élément à sa position d'origine */
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 }
