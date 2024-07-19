@@ -172,16 +172,16 @@ useEffect(() => {
       );
 
       if (updateResponse.ok) {
-        setMessage("Critique mise à jour avec succès");
+        setReviewMessage("Critique mise à jour avec succès");
         const updatedReviews = reviews.map((review) =>
           review.id === reviewId ? { ...review, content: newContent } : review
         );
-        setReviews(updatedReviews); // Mise à jour des avis
+        setReviews(updatedReviews);
       } else {
         throw new Error("Erreur lors de la mise à jour de la critique");
       }
     } catch (error) {
-      setMessage(error.message); // Mise à jour du message d'erreur
+      setReviewMessage(error.message);
     }
   };
 
@@ -281,16 +281,26 @@ useEffect(() => {
           <h1>Avis</h1>
           {reviewMessage && <p>{reviewMessage}</p>} {/* Affichage des messages concernant les avis */}
           <div>
-            {reviews.map((review) => (
+          {reviews.map((review) => (
               <div key={review.id} className="review-item">
                 <input
                   type="text"
                   value={review.content}
-                  onChange={(e) =>
-                    handleUpdateReview(review.id, e.target.value)
-                  }
+                  onChange={(e) => {
+                    const newContent = e.target.value;
+                    const updatedReviews = reviews.map((r) =>
+                      r.id === review.id ? { ...r, content: newContent } : r
+                    );
+                    setReviews(updatedReviews);
+                  }}
                   className="input-review-content"
                 />
+                <button
+                  onClick={() => handleUpdateReview(review.id, review.content)}
+                  className="btn-profile"
+                >
+                  Mettre à jour
+                </button>
                 <button
                   onClick={() => handleDeleteReview(review.id)}
                   className="btn-delete-review"

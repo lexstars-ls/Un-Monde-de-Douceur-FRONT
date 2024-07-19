@@ -5,27 +5,32 @@
   padding: 0;
 }
 
-#mainParcoursPage {
+#mainPrestationPage {
   min-height: 80vh;
   padding-top: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: $color3;
+  background-color: $color2;
+
+  p {
+    font-size: 20px;
+    color: $color1;
+  }
 
   .article {
-    // margin-bottom: 20px;
-    padding: 20px;
-    border-bottom: 1px solid #ddd;
-    height: 100%;
+    border-radius: 15px;
+    
     width: 95%;
-    min-height: 50vh;
 
-    background-color: $color5;
+    background-color: $color4;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+
     align-items: center;
+    margin-bottom: 20px;
+    overflow: hidden;
 
     h2 {
       margin: 50px;
@@ -33,21 +38,33 @@
     }
 
     .imageContainer {
-      max-width: 600px;
+
+      position: relative;
+      height: 600px;
+      width: 700px;
+      overflow: hidden;
 
       img {
-        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        object-fit: cover; // Assure que l'image couvre le conteneur sans déformation
+        transform: translate(-50%, -50%);
+        height: 100%;
       }
     }
 
-
     section {
+      margin-left: 5%;
+      margin-right: 5%;
+      
+      padding-left: 20px;
+
       display: flex;
       flex-direction: column;
-      text-align: center;
+      text-align: start;
       width: 50%;
       min-height: 600px;
-
     }
 
     .article-title {
@@ -57,10 +74,10 @@
 
     .article-text {
       font-size: 16px;
-
-
     }
   }
+
+
 
   .containerReview {
     text-align: center;
@@ -85,10 +102,9 @@
         max-width: 400px;
         height: 100px;
         padding: 10px;
-
         border: 1px solid #ccc;
         border-radius: 5px;
-        resize: vertical; // Permet à l'utilisateur de redimensionner la zone de texte verticalement
+        resize: vertical;
       }
 
       button {
@@ -108,4 +124,92 @@
     }
   }
 
+}
+
+// Media Queries for Tablet
+@media screen and (max-width: 768px) {
+  #mainPrestationPage {
+    .article {
+      flex-direction: column;
+
+
+
+      section {
+        width: 90%;
+        min-height: 300px;
+
+      }
+
+      .imageContainer {
+        margin-bottom: 20px;
+
+
+      }
+
+      h2 {
+        margin: 20px 0;
+      }
+
+      .article-title {
+        font-size: 22px;
+      }
+
+      .article-text {
+        text-align: start;
+        font-size: 16px;
+      }
+    }
+
+    .containerReview form textarea {
+      max-width: 300px;
+    }
+  }
+}
+
+
+// Media Queries for Mobile
+@media screen and (max-width: 480px) {
+  #mainPrestationPage {
+    padding-top: 100px;
+
+    .article {
+      padding: 10px;
+
+      section {
+
+        min-height: 200px;
+
+        width: 100%;
+        padding-bottom: 20px;
+
+        h2 {
+          margin: 10px 0;
+        }
+
+        .article-title {
+          font-size: 20px;
+        }
+
+        .article-text {
+          text-align: start;
+        }
+      }
+
+
+    }
+
+    .containerReview {
+      h1 {
+        font-size: 20px;
+      }
+
+      form textarea {
+        max-width: 250px;
+      }
+
+      button {
+        margin-bottom: 30px;
+      }
+    }
+  }
 }

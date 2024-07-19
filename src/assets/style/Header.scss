@@ -99,9 +99,23 @@ header {
     // Media queries pour les tablettes
     @media screen and (max-width: 768px) {
         nav {
-            ul li a {
-                font-size: 20px;
+            ul {
+                li {
+                    #loginButton,
+                    #profilButton,
+                    #disconnectButton {
+                        padding: 8px 12px;
+                        border-radius: 200px;
+                        font-size: 15px;
+                       
+                    }
+                    a {
+                        font-size: 20px;
+                    }
+                }
             }
+          
+           
         }
 
     }
@@ -109,6 +123,7 @@ header {
     // Media queries pour les mobiles
     @media screen and (max-width: 480px) {
         nav {
+            
             &.menu-close {
                 height: 90px;
 

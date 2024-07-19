@@ -9,7 +9,6 @@
   justify-content: center;
 
   #sectionLogin {
-
     form {
       background-color: #f8f9fa;
       border-radius: 10px;
@@ -18,16 +17,13 @@
       width: 500px;
       height: 300px;
       display: flex;
-
       justify-content: center;
       flex-direction: column;
-
-
 
       label {
         margin-bottom: 10px;
         font-weight: bold;
-
+        color: $color1;
       }
 
       input {
@@ -36,10 +32,6 @@
         border: 1px solid $color1;
         border-radius: 5px;
         margin-top: 5px;
-      }
-
-      label {
-        color: $color1;
       }
 
       button {
@@ -62,19 +54,60 @@
         color: $color6;
 
         &:last-of-type {
-          // Styles spécifiques pour le dernier paragraphe
-          transition: color 0.3s ease; // Transition pour changer la couleur du texte
+          transition: color 0.3s ease;
           cursor: pointer;
           color: black;
           text-decoration: underline;
         }
 
         &:last-of-type:hover {
-          // Styles lors du survol du dernier paragraphe
-          color: blue;
+          color: red;
         }
       }
+    }
+  }
+}
 
+// Media queries pour les tablettes
+@media screen and (max-width: 768px) {
+  .loginpage-main {
+    padding: 20px;
+
+    #sectionLogin {
+      form {
+        width: 100%;
+        padding: 15px;
+      }
+    }
+  }
+}
+
+// Media queries pour les mobiles
+@media screen and (max-width: 480px) {
+  .loginpage-main {
+    padding: none;
+    align-items: center;
+
+
+
+    #sectionLogin {
+      display: flex;
+      align-items: center;
+      width: 90%;
+
+      form {
+        width: 100%;
+
+
+        input {
+          width: 90%;
+
+        }
+
+        button {
+          margin-bottom: 10px;
+        }
+      }
     }
   }
 }

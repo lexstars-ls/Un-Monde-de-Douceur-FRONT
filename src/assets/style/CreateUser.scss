@@ -5,9 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  justify-content: center;
   height: 100vh;
-
 
   .create-user-form {
     background-color: #f8f9fa;
@@ -61,4 +59,51 @@
       }
     }
   }
+}
+
+// Media Queries for Tablet
+@media screen and (max-width: 768px) {
+  .create-user-page-main {
+    .create-user-form {
+
+
+      h2 {
+        font-size: 24px;
+      }
+
+      input {
+        width: 100%;
+      }
+
+      button {
+        font-size: 14px;
+      }
+    }
+  }
+
+}
+
+// Media Queries for Mobile
+@media screen and (max-width: 480px) {
+  .create-user-page-main {
+    .create-user-form {
+      width: 80%;
+      padding: 10px;
+
+      h2 {
+        font-size: 20px;
+      }
+
+      input {
+        width: 100%;
+        padding: 8px;
+      }
+
+      button {
+        font-size: 14px;
+        padding: 8px;
+      }
+    }
+  }
+
 }
