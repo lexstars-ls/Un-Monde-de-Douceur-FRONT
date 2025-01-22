@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "../../assets/style/Header.scss";
 import { useNavigate } from "react-router-dom";
-
+import logo from "../../assets/img/logo.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faXmark} from "@fortawesome/free-solid-svg-icons";
+import {faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -37,11 +37,18 @@ const Header = () => {
   return (
     <header id="headerUser">
       <nav className={isMenuOpen ? "menu-open" : "menu-close"}>
-      <button className="menu-toggle" onClick={toggleMenu}>
+        <button className="menu-toggle" onClick={toggleMenu}>
           {/* Utiliser une icône pour le bouton de menu */}
-          {isMenuOpen ?  <FontAwesomeIcon icon={faXmark} />: <FontAwesomeIcon icon={faBars} />}
+          {isMenuOpen ? (
+            <FontAwesomeIcon icon={faXmark} />
+          ) : (
+            <img id="imageLogo" src={logo} alt="logo" />
+          )}
         </button>
         <ul>
+          <li>
+            <img id="imageLogo" src={logo} alt="logo" />
+          </li>
           <li>
             <a href="/">Accueil</a>
           </li>

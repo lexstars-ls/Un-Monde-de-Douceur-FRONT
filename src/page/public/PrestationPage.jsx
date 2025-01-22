@@ -11,7 +11,7 @@ const PrestationPage = () => {
   const [isLogged, setIsLogged] = useState(false); // État pour stocker l'état de connexion de l'utilisateur
 
   useEffect(() => {
-    // Vérifier si l'utilisateur est connecté lors du montage du composant
+    // Vérifier si l'utilisateur est connecté 
     const storedToken = localStorage.getItem("jwt");
     setIsLogged(!!storedToken); // Mettre à jour l'état en fonction de la présence du token
     fetchArticles();
@@ -132,5 +132,4 @@ const PrestationPage = () => {
     </>
   );
 };
-
 export default PrestationPage;

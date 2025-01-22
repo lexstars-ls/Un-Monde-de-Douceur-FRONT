@@ -17,7 +17,8 @@ import GalleryCrudPage from "./page/admin/GalleryPage";
 import AdminImagePage from "./page/admin/AdminImagePage";
 import AdminArticlePage from "./page/admin/AdminArticlePage";
 import AdminReviewPage from "./page/admin/AdminReviewPage";
-
+import AdminTarifPage from "./page/admin/AdminTarifPage";
+import AdminUserPage from "./page/admin/AdminUserPage";
 function App() {
   return (
     <Router>
@@ -45,6 +46,8 @@ function App() {
         <Route path="/admin/Image" element={<AdminImagePage />} />
         <Route path="/admin/Review" element={<AdminReviewPage />} />
         <Route path="/admin/Article" element={<AdminArticlePage />} />
+        <Route path="/admin/Tarif" element={<AdminTarifPage />} />
+        <Route path="/admin/User" element={<AdminUserPage />} />
       </Routes>
     </Router>
   );

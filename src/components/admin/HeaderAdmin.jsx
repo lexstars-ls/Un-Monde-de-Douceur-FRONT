@@ -37,6 +37,10 @@ const HeaderAdmin = () => {
             <Link to="/admin/Tarif">Gérer les Tarifs</Link>
           </li>
           
+          <li>
+            <Link to="/admin/User">Gérer (Admin et utilisateur) </Link>
+          </li>
+
         </ul>
         <button onClick={handleLogout}>Se déconnecter</button>
       </nav>

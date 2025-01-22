@@ -31,6 +31,10 @@ header {
             li {
                 font-size: 30px;
 
+                img {
+                    height: 90px;
+                }
+
                 a {
                     text-decoration: none;
                     font-style: none;
@@ -101,21 +105,27 @@ header {
         nav {
             ul {
                 li {
+
                     #loginButton,
                     #profilButton,
                     #disconnectButton {
                         padding: 8px 12px;
                         border-radius: 200px;
                         font-size: 15px;
-                       
+
                     }
+
+                    img {
+                        height: 50px;
+                    }
+
                     a {
                         font-size: 20px;
                     }
                 }
             }
-          
-           
+
+
         }
 
     }
@@ -123,7 +133,7 @@ header {
     // Media queries pour les mobiles
     @media screen and (max-width: 480px) {
         nav {
-            
+
             &.menu-close {
                 height: 90px;
 
@@ -134,18 +144,32 @@ header {
                     background: none;
                     border: none;
 
-                    svg {
-                        height: 30px;
+
+                    img {
+                        width: 60px;
                     }
+
+
+                    // svg {
+                    //     height: 30px;
+                    // }
                 }
 
                 .menu-toggle:hover {
-                    transform: scale(1.2);
+                    img {
+                        transform: scale(1.2);
+                    }
                 }
 
                 ul {
                     max-height: 0;
                     opacity: 0;
+
+                    li {
+                        img {
+                            display: none;
+                        }
+                    }
                 }
             }
 
@@ -178,6 +202,10 @@ header {
 
                     li {
                         height: 30px;
+
+                        img {
+                            display: none;
+                        }
                     }
                 }
             }
